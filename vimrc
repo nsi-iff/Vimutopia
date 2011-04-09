@@ -80,3 +80,4 @@ nmap <c-left> gT
 
 " Vimrcs to specific file types
 autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py
+autocmd BufNewFile,BufRead *.c,*.cpp source $HOME/.vimrc-dumal/vimrc-c

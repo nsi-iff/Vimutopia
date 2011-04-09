@@ -20,9 +20,9 @@ def paste():
 def get_all_words():
     words = []
     for line in vim.current.buffer:
-        for word in line.split(" "):
-            if word:
-                words.append(word)
+        words_of_line = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
+        for word in words_of_line:
+            words.append(word)
     return words
 
 def get_completation(text):
@@ -45,10 +45,12 @@ def get_index_of_equals(text1, text2):
     return min(len(text1), len(text2))
 
 def get_used_text(text):
-    match = re.search("[^ ]*$", text)
-    unused = text[:match.start()]
-    used = text[match.start():]
-    return unused + "%s", used
+    match = re.search("[A-Za-z_]+$", text)
+    if match != None:
+        unused = text[:match.start()]
+        used = text[match.start():]
+        return unused + "%s", used
+    return text + "%s", ""
 
 def auto_complete():
     line, row = vim.current.window.cursor

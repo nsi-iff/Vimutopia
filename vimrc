@@ -7,6 +7,9 @@ syntax on
 " Show ruler
 set ruler
 
+" Show statusbar with 2 lines
+set laststatus=2
+
 python << EOF
 import commands
 import vim

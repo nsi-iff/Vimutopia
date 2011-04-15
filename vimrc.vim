@@ -73,14 +73,19 @@ def auto_complete():
         vim.current.window.cursor = (line, row + 4)
 EOF
 
-" Aliases
+" >> Aliases <<
+
+" Move tabs
 imap <c-right> <ESC>gta
 imap <c-left> <ESC>gTa
-imap <c-v> <ESC>:python paste()<CR>a
-imap <TAB> <ESC>:python auto_complete()<CR>a
-
 nmap <c-right> gt
 nmap <c-left> gT
+
+" Paste extern text with ctrl+v
+imap <c-v> <ESC>:python paste()<CR>a
+
+" Auto-complete words
+imap <TAB> <ESC>:python auto_complete()<CR>a
 
 " Vimrcs to specific file types
 autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py.vim

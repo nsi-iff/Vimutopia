@@ -44,8 +44,7 @@ def get_completation(text):
         return text_completed
 EOF
 
-  " >>Aliases<<
-
+" >>Aliases<<
 
 " Specloud
 imap <F5> <ESC>:w<CR>:! clear; specloud; echo "Press enter to continue..."; read<CR>a

@@ -87,6 +87,14 @@ imap <c-v> <ESC>:python paste()<CR>a
 " Auto-complete words
 imap <TAB> <ESC>:python auto_complete()<CR>a
 
+" Mouse Activate ON
+imap <F6> <ESC>:set mouse=a <CR>a
+nmap <F6> :set mouse=a <CR>
+
+"Mouse Activate OFF
+imap <c-F6> <ESC>:set mouse= <CR>a
+nmap <c-F6> :set mouse= <CR>
+
 " Vimrcs to specific file types
 autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py.vim
 autocmd BufNewFile,BufRead *.c,*.cpp source $HOME/.vimrc-dumal/vimrc-c.vim

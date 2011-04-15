@@ -44,7 +44,17 @@ def get_completation(text):
         return text_completed
 EOF
 
-" Aliases
-imap <F5> <ESC>:w<CR>:! clear; specloud; echo -n "Press enter to continue..."; read<CR>a
+  " >>Aliases<<
 
-nmap <F5> :w<CR>:! specloud<CR>
+
+" Specloud
+imap <F5> <ESC>:w<CR>:! clear; specloud; echo "Press enter to continue..."; read<CR>a
+nmap <F5> :w<CR>:! clear; specloud<CR>
+
+" Ipython
+imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
+nmap <F9> :! ipython<CR>
+
+" Help
+"imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a
+"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>

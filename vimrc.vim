@@ -10,6 +10,10 @@ set ruler
 " Show statusbar with 2 lines
 set laststatus=2
 
+" Activate backspace to delete characters
+nmap <BS> X
+imap <BS> <LEFT><DEL>
+
 python << EOF
 import commands
 import vim

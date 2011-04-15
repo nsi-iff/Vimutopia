@@ -55,6 +55,13 @@ nmap <F5> :w<CR>:! clear; specloud<CR>
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
 
+" Mouse ON
+imap <F2> <ESC>:set mouse=a <CR>a
+nmap <F2> :set mouse=a <CR>
+" Mouse OFF
+imap <F3> <ESC>:set mouse= <CR>a
+nmap <F3> :set mouse= <CR>
+
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a
 "map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>

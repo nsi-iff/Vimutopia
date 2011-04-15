@@ -1,4 +1,4 @@
-main: python_deps
+install: python_deps
 	./warning.sh
 	if [ -f $(HOME)/.vimrc ]; then rm $(HOME)/.vimrc; fi
 	cp vimrc.vim $(HOME)/.vimrc

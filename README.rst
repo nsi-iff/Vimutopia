@@ -3,7 +3,7 @@ Vimrc-dumal
 ========================
 
 This vimrc was configured to help developers to create his scripts. Currently it has functions to edit simple texts, Python and C archives.
-It had been developed in IFF Research Group(NSI)[#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
+It had been developed in IFF Research Group(NSI) [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
 
 
 Some considerations
@@ -26,10 +26,10 @@ Python especifications
 
 For Python codes will be installed some packages.
     
--  Ipython[#]_: Interative Python shell
--  Should_dsl[#]_: Tool to create high level tests
--  Specloud[#]_: Tool tests to run it more cleanly
--  Pip[#]_:  Tool to install Python packages
+-  Ipython [#]_: Interative Python shell
+-  Should_dsl [#]_: Tool to create high level tests
+-  Specloud [#]_: Tool tests to run it more cleanly
+-  Pip [#]_:  Tool to install Python packages
 
 
 Links

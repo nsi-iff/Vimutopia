@@ -14,6 +14,14 @@ set laststatus=2
 nmap <BS> X
 imap <BS> <LEFT><DEL>
 
+" Dynamic search
+set incsearch
+set hlsearch
+
+" Hide search results
+imap <S-F11> <ESC>:let @/=""<CR>a
+nmap <S-F11> :let @/=""<CR>
+
 python << EOF
 import commands
 import vim

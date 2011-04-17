@@ -2,7 +2,7 @@
 Vimrc-dumal
 ========================
 
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in INFORMATION SYSTEMS RESEARCH GROUP ISRg (IFF Research Group(NSI)) [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
+This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in INFORMATION SYSTEMS RESEARCH GROUP ISRg (IFF Research Group(NSI)) [#]_ by Angelo Nuffer, Felipe Norato, Wésleymberg Silva.
 
 
 Some considerations
@@ -15,7 +15,7 @@ These archives will replace your vimrc in /home.
 Installing
 =================
 
-To install you have to rum in terminal:
+To install you have to run in terminal:
 
 	$ sudo make install
 

@@ -2,12 +2,8 @@
 Vimrc-dumal
 ========================
 
-<<<<<<< HEAD
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
-=======
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in INFORMATION SYSTEMS RESEARCH GROUP ISRg (IFF Research Group(NSI)) [#]_ by Angelo Nuffer, Felipe Norato, Wésleymberg Silva.
->>>>>>> a6d0050dd428fcd24c40ea5d25fcdc6412a627fe
 
+This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
 
 Some considerations
 ====================

@@ -17,7 +17,6 @@ opcoes=$( dialog --stdout --separate-output                                     
     --title "vimrc-dumal"                    \
     --checklist 'Select the vimrc package to install'   0 0 0          \
     Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl"     ON \
-    C        "C Dependences"          ON \
 )
 
 [ "$?" -eq 1 ] && exit 1
@@ -33,7 +32,6 @@ do
         pip install should_dls spacloud
     fi    
     
-    [ $opcao = 'C' ] && apt-get update
 
 done
 

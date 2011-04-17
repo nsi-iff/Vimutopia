@@ -103,6 +103,16 @@ nmap <F6> :set mouse=a <CR>
 imap <c-F6> <ESC>:set mouse= <CR>a
 nmap <c-F6> :set mouse= <CR>
 
+" Open a new tab
+nnoremap <C-t>     :tabnew
+
+" Move between tabs
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <C-Left>  :tabprevious<CR>
+
+
+
+
 " Vimrcs to specific file types
 autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py.vim
 autocmd BufNewFile,BufRead *.c,*.cpp source $HOME/.vimrc-dumal/vimrc-c.vim

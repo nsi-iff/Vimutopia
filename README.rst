@@ -2,26 +2,23 @@
 Vimrc-dumal
 ========================
 
-<<<<<<< HEAD
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
-=======
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in INFORMATION SYSTEMS RESEARCH GROUP ISRg (IFF Research Group(NSI)) [#]_ by Angelo Nuffer, Felipe Norato, Wésleymberg Silva.
->>>>>>> a6d0050dd428fcd24c40ea5d25fcdc6412a627fe
 
+This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
 
 Some considerations
 ====================
 
 
-These archives will replace your vimrc in /home.
+These files will replace your vimrc in /home.
 
 
 Installing
 =================
 
 To install you have to run in terminal:
-
-	$ sudo vimrc-dumal
+	
+	$ chmod x
+	$ sudo ./vimrc-dumal
 
 
 Python especifications
@@ -33,7 +30,7 @@ For Python codes will be installed some packages.
 -  Should_dsl [#]_: Tool to create high level tests
 -  Specloud [#]_: Tool tests to run it more cleanly
 -  Pip [#]_:  Tool to install Python packages
-
+-  Python-dev [#]_: PyDev is a Python IDE for Eclipse, which may be used in Python, Jython and IronPython development.
 
 Links
 ========================
@@ -43,3 +40,4 @@ Links
 .. [#] http://www.should-dsl.info/
 .. [#] http://pypi.python.org/pypi/specloud
 .. [#] http://www.pip-installer.org/en/latest/
+.. [#] http://pydev.org/

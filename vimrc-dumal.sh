@@ -17,7 +17,7 @@ opcoes=$( dialog --stdout --separate-output                                     
     --title "vimrc-dumal"                    \
     --checklist 'Select the vimrc package to install'   0 0 0          \
     Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl"     ON \
-    C        "C Dependences"          ON \
+    C   "Python Configuration and Dependences"     ON \
 )
 
 [ "$?" -eq 1 ] && exit 1
@@ -28,7 +28,7 @@ while read opcao
 do
     if  [ $opcao = 'Python' ]
     then
-        apt-get install python-setuptools ipython vim
+        apt-get install python-setuptools ipython vim python-dev
         easy_install pip
         pip install should_dsl specloud
 	cp  src/vimrc-py.vim $HOME/.vimrc-dumal/vimrc-py.vim
@@ -37,6 +37,7 @@ do
     
     [ $opcao = 'C' ] && cp  src/vimrc-c.vim $HOME/.vimrc-dumal/vimrc-c.vim; cp  src/doc/help-c.man $HOME/.vimrc-dumal/doc/help-c.man
 	
+
 done
 
 dialog --title 'Aviso' \

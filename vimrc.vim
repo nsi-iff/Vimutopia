@@ -110,9 +110,4 @@ nnoremap <C-t>     :tabnew
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-Left>  :tabprevious<CR>
 
-
-
-
-" Vimrcs to specific file types
-autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py.vim
-autocmd BufNewFile,BufRead *.c,*.cpp source $HOME/.vimrc-dumal/vimrc-c.vim
+" Vimrcs to specific file types [added dynamically]

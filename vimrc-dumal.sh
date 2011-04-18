@@ -11,7 +11,7 @@ apt-get install xclip
 	cp vimrc.vim $HOME/.vimrc
 	if [ -d $HOME/.vimrc-dumal ]; then rm -Rf $HOME/.vimrc-dumal; fi
 	mkdir $HOME/.vimrc-dumal
-	cp -r src/* $HOME/.vimrc-dumal/
+	mkdir $HOME/.vimrc-dumal/doc
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimrc-dumal"                    \
@@ -28,16 +28,19 @@ while read opcao
 do
     if  [ $opcao = 'Python' ]
     then
-        apt-get install python-setuptools ipython vimrc
+        apt-get install python-setuptools ipython vim
         easy_install pip
-        pip install should_dls spacloud
+        pip install should_dsl specloud
+	cp  src/vimrc-py.vim $HOME/.vimrc-dumal/vimrc-py.vim
+	cp  src/doc/help-py.man $HOME/.vimrc-dumal/doc/help-py.man
     fi    
     
-    [ $opcao = 'C' ] && apt-get update
-
+    [ $opcao = 'C' ] && cp  src/vimrc-c.vim $HOME/.vimrc-dumal/vimrc-c.vim; cp  src/doc/help-c.man $HOME/.vimrc-dumal/doc/help-c.man
+	
 done
 
 dialog --title 'Aviso' \
         --msgbox 'Instalação concluída!' \
 0 0
+
 

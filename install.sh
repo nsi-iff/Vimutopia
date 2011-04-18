@@ -44,4 +44,4 @@ dialog --title 'Aviso' \
         --msgbox 'Instalação concluída!' \
 0 0
 
-
+clear

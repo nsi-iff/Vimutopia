@@ -27,9 +27,9 @@ while read opcao
 do
     if  [ $opcao = 'Python' ]
     then
-        apt-get install python-setuptools ipython vimrc
+        apt-get install python-setuptools ipython vimrc python-dev
         easy_install pip
-        pip install should_dls spacloud
+        pip install should_dsl spacloud
     fi    
     
 

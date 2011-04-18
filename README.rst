@@ -16,9 +16,8 @@ Installing
 =================
 
 To install you have to run in terminal:
-	
-	$ chmod x
-	$ sudo ./vimrc-dumal
+
+    # ./install.sh
 
 
 Python especifications

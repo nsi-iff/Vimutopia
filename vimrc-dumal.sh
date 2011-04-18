@@ -17,7 +17,7 @@ opcoes=$( dialog --stdout --separate-output                                     
     --title "vimrc-dumal"                    \
     --checklist 'Select the vimrc package to install'   0 0 0          \
     Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl"     ON \
-    C   "Python Configuration and Dependences"     ON \
+    C   "C Configuration and Dependences"     ON \
 )
 
 [ "$?" -eq 1 ] && exit 1

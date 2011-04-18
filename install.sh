@@ -6,6 +6,7 @@ vim=0
 
 apt-get install dialog
 apt-get install xclip
+apt-get install vim
 
 if [ -f $HOME/.vimrc ]; then rm $HOME/.vimrc; fi
 cp vimrc.vim $HOME/.vimrc
@@ -27,7 +28,7 @@ while read opcao
 do
     if [ $opcao == 'Python' ]
     then
-        apt-get install python-setuptools ipython vim python-dev
+        apt-get install python-setuptools ipython python-dev
         easy_install pip
         pip install should_dsl specloud
         cp src/vimrc-py.vim $HOME/.vimrc-dumal/vimrc-py.vim

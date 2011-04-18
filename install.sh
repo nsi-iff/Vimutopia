@@ -20,7 +20,7 @@ opcoes=$( dialog --stdout --separate-output                                     
     C   "C Configuration and Dependences"     ON \
 )
 
-[ "$?" -eq 1 ] && exit 1
+[ "$?" -eq 1 ] && clear; exit 1
 
 echo "$opcoes" |
 while read opcao

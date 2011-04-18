@@ -17,7 +17,7 @@ Installing
 
 To install you have to run in terminal:
 
-    $ sudo ./install.sh
+    # ./install.sh
 
 
 Python especifications

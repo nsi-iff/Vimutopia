@@ -26,6 +26,15 @@ def get_used_text(text):
     used = match.groupdict()["used"]
     return unused + "%s", used
 
+
+def create_header():
+    if vim.current.buffer[0]=="":
+        vim.current.buffer[0] = "#!/usr/bin/python"
+        vim.current.buffer.append("# -*- coding: utf-8 -*-")
+        vim.current.buffer.append("")
+        vim.current.window.cursor = (3,0)
+   
+
 def get_completation(text):
     if text:
         completer = rlcompleter.Completer()
@@ -53,6 +62,9 @@ nmap <F5> :w<CR>:! clear; specloud<CR>
 " Ipython
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
+
+"header
+python create_header()
 
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a

@@ -19,6 +19,8 @@ retab
 python << EOF
 import rlcompleter
 import vim
+import os
+import sys
 
 def get_used_text(text):
     match = re.search("^(?P<unused> *)(?P<used>.*)$", text)
@@ -26,7 +28,15 @@ def get_used_text(text):
     used = match.groupdict()["used"]
     return unused + "%s", used
 
-
+def create_imports_for_tests():
+    filename = vim.current.buffer.name
+    print filename
+    if filename.find("spec") != -1 and vim.current.buffer[2] == "":
+        vim.current.buffer[2] = "import unittest"
+        vim.current.buffer.append("from should_dsl import should")
+        vim.current.buffer.append("")
+        vim.current.window.cursor = (5,0)
+ 
 def create_header():
     if vim.current.buffer[0]=="":
         vim.current.buffer[0] = "#!/usr/bin/python"
@@ -65,6 +75,9 @@ nmap <F9> :! ipython<CR>
 
 "header
 python create_header()
+
+"create import for tests
+python create_imports_for_tests()
 
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a

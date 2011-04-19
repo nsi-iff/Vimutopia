@@ -17,7 +17,7 @@ mkdir $HOME/.vimrc-dumal/doc
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimrc-dumal"                    \
     --checklist 'Select the vimrc package to install'   0 0 0          \
-    Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl"     ON \
+    Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl, Python-dev)"     ON \
     C   "C Configuration and Dependences"     ON \
 )
 

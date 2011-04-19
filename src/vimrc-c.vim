@@ -13,9 +13,18 @@ set expandtab
 " Convert existent tabs
 retab
 
-" Aliases
-imap <F5> <ESC>:! clear; make; bash<CR>a
-imap <F6> <ESC>:! clear; ./run_tests.sh; echo -n "Press enter to continue..."; read<CR>a
+" >>>Aliases<<<
 
-nmap <F5> :! clear; make; bash<CR>
-nmap <F6> :! clear; ./run_tests.sh<CR>
+"imap <F5> <ESC>:! clear; make; bash<CR>a
+"imap <F6> <ESC>:! clear; ./run_tests.sh; echo -n "Press enter to continue..."; read<CR>a
+
+"nmap <F5> :! clear; make; bash<CR>
+"nmap <F6> :! clear; ./run_tests.sh<CR>
+
+" Compiler and run
+imap <F9> <ESC>:! clear; gcc % -o %:r; ./%:r<CR>
+nmap <F9> :! clear; gcc % -o %:r; ./%:r<CR>
+
+" Run
+imap <F9> <ESC>:! clear; ./%:r<CR>
+nmap <F9> :! clear; ./%:r<CR>

@@ -28,15 +28,22 @@ def get_used_text(text):
     used = match.groupdict()["used"]
     return unused + "%s", used
 
+def get_program_name(test_name):
+    return test_name.split("_")[0]
+
 def create_imports_for_tests():
-    filename = vim.current.buffer.name
-    print filename
+    full_filename = vim.current.buffer.name
+    filename = full_filename.split("/")[-1]
+    name = get_program_name(filename)
     if filename.find("spec") != -1 and vim.current.buffer[2] == "":
         vim.current.buffer[2] = "import unittest"
         vim.current.buffer.append("from should_dsl import should")
-        vim.current.buffer.append("")
-        vim.current.window.cursor = (5,0)
- 
+        vim.current.buffer.append("from " + name + " import ")
+        vim.current.window.cursor = (5,len(vim.current.buffer[-1]))
+        vim.command(":tabnew " + name + ".py")
+        vim.command("python create_header()")
+        vim.command("tabp")
+        
 def create_header():
     if vim.current.buffer[0]=="":
         vim.current.buffer[0] = "#!/usr/bin/python"

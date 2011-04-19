@@ -15,15 +15,9 @@ retab
 
 " >>>Aliases<<<
 
-"imap <F5> <ESC>:! clear; make; bash<CR>a
-"imap <F6> <ESC>:! clear; ./run_tests.sh; echo -n "Press enter to continue..."; read<CR>a
-
-"nmap <F5> :! clear; make; bash<CR>
-"nmap <F6> :! clear; ./run_tests.sh<CR>
-
-" Compiler and run
-imap <F9> <ESC>:! clear; gcc % -o %:r; ./%:r<CR>
-nmap <F9> :! clear; gcc % -o %:r; ./%:r<CR>
+" Compile and run
+imap <F8> <ESC>:w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
+nmap <F8> :w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
 
 " Run
 imap <F9> <ESC>:! clear; ./%:r<CR>

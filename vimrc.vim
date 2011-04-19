@@ -12,7 +12,7 @@ set laststatus=2
 
 " Show markup characters
 set list
-set listchars=eol:¬
+set listchars=eol:¬,trail:▸
 
 " Activate backspace to delete characters
 nmap <BS> X

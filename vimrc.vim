@@ -18,9 +18,7 @@ set listchars=eol:¬,trail:▸
 set mouse=a
 
 " Activate backspace to delete characters
-nmap <BS> x
-imap <BS> <LEFT><DEL>
-
+set backspace=2
 " Dynamic search
 set incsearch
 set hlsearch
@@ -101,5 +99,9 @@ imap <C-Right> <ESC>:tabnext<CR>a
 imap <C-Left> <ESC>:tabprevious<CR>a
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-Left>  :tabprevious<CR>
+
+" Save
+imap <C-w> <ESC>:w<CR>a
+nnoremap <C-w> :w<CR>
 
 " Vimrcs to specific file types [added dynamically]

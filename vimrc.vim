@@ -14,6 +14,9 @@ set laststatus=2
 set list
 set listchars=eol:¬,trail:▸
 
+" Use the mouse
+set mouse=a
+
 " Activate backspace to delete characters
 nmap <BS> x
 imap <BS> <LEFT><DEL>
@@ -92,14 +95,6 @@ imap <c-v> <ESC>:python paste()<CR>a
 
 " Auto-complete words
 imap <TAB> <ESC>:python auto_complete()<CR>a
-
-" Mouse Activate ON
-imap <F6> <ESC>:set mouse=a <CR>a
-nmap <F6> :set mouse=a <CR>
-
-"Mouse Activate OFF
-imap <c-F6> <ESC>:set mouse= <CR>a
-nmap <c-F6> :set mouse= <CR>
 
 " Open a new tab
 nnoremap <C-t>     :tabnew 

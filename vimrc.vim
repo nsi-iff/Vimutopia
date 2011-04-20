@@ -90,7 +90,7 @@ EOF
 " >> Aliases <<
 
 " Copy a text to this file
-vmap <C-c> y
+vmap <C-c> ya
 
 " Paste a text from this file
 imap <C-v> <ESC>pa

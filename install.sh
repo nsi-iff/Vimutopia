@@ -18,7 +18,7 @@ opcoes=$( dialog --stdout --separate-output                                     
     --title "vimrc-dumal"                    \
     --checklist 'Select the vimrc package to install'   0 0 0          \
     Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl, Python-dev)"     ON \
-    C   "C Configuration and Dependences"     ON \
+    C   "C Configuration and Dependences (gcc)"     ON \
 )
 
 if [ "$?" -eq 1 ]
@@ -42,6 +42,7 @@ do
     
     if [ $opcao == 'C' ]
     then
+        apt-get install gcc
         cp src/vimrc-c.vim $HOME/.vimrc-dumal/vimrc-c.vim
         cp src/doc/help-c.man $HOME/.vimrc-dumal/doc/help-c.man
         echo "autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp source $HOME/.vimrc-dumal/vimrc-c.vim" >> $HOME/.vimrc

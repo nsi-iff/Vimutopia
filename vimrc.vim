@@ -90,9 +90,6 @@ EOF
 
 " >> Aliases <<
 
-" Paste extern text with ctrl+v
-imap <c-v> <ESC>:python paste()<CR>a
-
 " Auto-complete words
 imap <TAB> <ESC>:python auto_complete()<CR>a
 

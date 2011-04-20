@@ -18,8 +18,7 @@ set listchars=eol:¬,trail:▸
 set mouse=a
 
 " Activate backspace to delete characters
-nmap <BS> x
-imap <BS> <LEFT><DEL>
+set backspace=2
 
 " Dynamic search
 set incsearch
@@ -89,6 +88,13 @@ def auto_complete():
 EOF
 
 " >> Aliases <<
+
+" Copy a text to this file
+vmap <C-c> y
+
+" Paste a text from this file
+imap <C-v> <ESC>pa
+nmap <C-v> p
 
 " Auto-complete words
 imap <TAB> <ESC>:python auto_complete()<CR>a

@@ -16,9 +16,9 @@ retab
 " >>>Aliases<<<
 
 " Compile and run
-imap <F8> <ESC>:w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
-nmap <F8> :w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
+imap <F9> <ESC>:w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
+nmap <F9> :w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
 
 " Run
-imap <F9> <ESC>:! clear; ./%:r<CR>
-nmap <F9> :! clear; ./%:r<CR>
+imap <F5> <ESC>:! clear; ./%:r<CR>
+nmap <F5> :! clear; ./%:r<CR>

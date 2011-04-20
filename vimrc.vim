@@ -15,7 +15,7 @@ set list
 set listchars=eol:¬,trail:▸
 
 " Activate backspace to delete characters
-nmap <BS> X
+nmap <BS> x
 imap <BS> <LEFT><DEL>
 
 " Dynamic search

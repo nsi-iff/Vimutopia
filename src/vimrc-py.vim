@@ -29,7 +29,18 @@ def get_used_text(text):
     return unused + "%s", used
 
 def get_program_name(test_name):
-    return test_name.split("_")[0]
+    name = test_name.split(".")[0]
+    name = name.strip("spec")
+    name = name.strip("_")
+    name = name.strip("-")
+    return name
+
+def create_header():
+    if vim.current.buffer[0]=="":
+        vim.current.buffer[0] = "#!/usr/bin/python"
+        vim.current.buffer.append("# -*- coding: utf-8 -*-")
+        vim.current.buffer.append("")
+        vim.current.window.cursor = (3,0)
 
 def create_imports_for_tests():
     full_filename = vim.current.buffer.name
@@ -40,17 +51,10 @@ def create_imports_for_tests():
         vim.current.buffer.append("from should_dsl import should")
         vim.current.buffer.append("from " + name + " import ")
         vim.current.window.cursor = (5,len(vim.current.buffer[-1]))
-        vim.command(":tabnew " + name + ".py")
-        vim.command("python create_header()")
+        vim.command("tabnew " + name + ".py")
+        create_header()
+        vim.command(":w")
         vim.command("tabp")
-        
-def create_header():
-    if vim.current.buffer[0]=="":
-        vim.current.buffer[0] = "#!/usr/bin/python"
-        vim.current.buffer.append("# -*- coding: utf-8 -*-")
-        vim.current.buffer.append("")
-        vim.current.window.cursor = (3,0)
-   
 
 def get_completation(text):
     if text:

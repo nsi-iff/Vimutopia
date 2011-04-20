@@ -87,12 +87,6 @@ EOF
 
 " >> Aliases <<
 
-" Move tabs
-imap <c-right> <ESC>gta
-imap <c-left> <ESC>gTa
-nmap <c-right> gt
-nmap <c-left> gT
-
 " Paste extern text with ctrl+v
 imap <c-v> <ESC>:python paste()<CR>a
 
@@ -111,6 +105,8 @@ nmap <c-F6> :set mouse= <CR>
 nnoremap <C-t>     :tabnew<CR>
 
 " Move between tabs
+imap <C-Right> <ESC>:tabnext<CR>a
+imap <C-Left> <ESC>:tabprevious<CR>a
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-Left>  :tabprevious<CR>
 

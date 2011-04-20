@@ -108,7 +108,7 @@ imap <c-F6> <ESC>:set mouse= <CR>a
 nmap <c-F6> :set mouse= <CR>
 
 " Open a new tab
-nnoremap <C-t>     :tabnew 
+nnoremap <C-t>     :tabnew<CR>
 
 " Move between tabs
 nnoremap <C-Right> :tabnext<CR>

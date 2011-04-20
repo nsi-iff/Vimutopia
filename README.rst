@@ -3,7 +3,7 @@ Vimrc-dumal
 ========================
 
 
-This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_ by Angelo Nuffer, Felipe Norato, Wesleymberg Souza.
+This vimrc was configured to help developers to create their scripts.Currently it has functions to edit simple texts, Python and C archives. It had been developed in Information Systems Research Group ISRg [#]_.
 
 Some considerations
 ====================
@@ -30,6 +30,13 @@ For Python codes will be installed some packages.
 -  Specloud [#]_: Tool tests to run it more cleanly
 -  Pip [#]_:  Tool to install Python packages
 -  Python-dev [#]_: PyDev is a Python IDE for Eclipse, which may be used in Python, Jython and IronPython development.
+
+C especifications
+=======================
+
+For C codes will be installed some packages
+
+- gcc [#]_: Compiler package for C and others languages
 
 Links
 ========================

@@ -12,7 +12,9 @@ if [ -f $HOME/.vimrc ]; then rm $HOME/.vimrc; fi
 cp vimrc.vim $HOME/.vimrc
 if [ -d $HOME/.vimrc-dumal ]; then rm -Rf $HOME/.vimrc-dumal; fi
 mkdir $HOME/.vimrc-dumal
+mkdir $HOME/.vimrc-dumal/scripts
 mkdir $HOME/.vimrc-dumal/doc
+cp src/scripts/vimrc.py $HOME/.vimrc-dumal/scripts
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimrc-dumal"                    \
@@ -38,6 +40,7 @@ do
         cp src/vimrc-py.vim $HOME/.vimrc-dumal/vimrc-py.vim
         cp doc/help-py.man $HOME/.vimrc-dumal/doc/help-py.man
         echo "autocmd BufNewFile,BufRead *.py source $HOME/.vimrc-dumal/vimrc-py.vim" >> $HOME/.vimrc
+        cp src/scripts/vimrc_py.py $HOME/.vimrc-dumal/scripts
     fi    
     
     if [ $opcao == 'C' ]

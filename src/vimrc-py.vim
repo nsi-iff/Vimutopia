@@ -30,10 +30,8 @@ def get_used_text(text):
 
 def get_program_name(test_name):
     name = test_name.split(".")[0]
-    name = name.strip("spec")
-    name = name.strip("_")
-    name = name.strip("-")
-    return name
+    name = "".join(("".join(name.split("spec_")).split("_spec")))
+    return "".join(("".join(name.split("spec-")).split("-spec")))
 
 def create_header():
     if vim.current.buffer[0]=="":

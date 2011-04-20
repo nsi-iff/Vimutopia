@@ -22,6 +22,7 @@ import vim
 import os
 import sys
 
+
 def get_used_text(text):
     match = re.search("^(?P<unused> *)(?P<used>.*)$", text)
     unused = match.groupdict()["unused"]
@@ -34,21 +35,25 @@ def get_program_name(test_name):
     return "".join(("".join(name.split("spec-")).split("-spec")))
 
 def create_header():
-    if vim.current.buffer[0]=="":
+   if vim.current.buffer[0]=="":
         vim.current.buffer[0] = "#!/usr/bin/python"
         vim.current.buffer.append("# -*- coding: utf-8 -*-")
         vim.current.buffer.append("")
         vim.current.buffer.append("")
         vim.current.window.cursor = (4,0)
 
-#def parse2pep08():
- #   for line in vim.document.buffer:
-  #      words = line.split(" ")
-   #     if words[0] == "class":
-    #        words[1] = 
+def parse2pep08():
+    for i, line in enumerate(vim.current.buffer):
+         words = line.split(" ")
+         if words[0] == "class":
+             words[1] = words[1].capitalize() 
+             new_line = ""
+             for word in words:
+                 new_line += " " + word
+             vim.current.buffer[i] = new_line
 
 def create_imports_for_tests():
-    full_filename = vim.current.buffer.name
+    full_filename =  vim.current.buffer.name
     filename = full_filename.split("/")[-1]
     name = get_program_name(filename)
     if filename.find("spec") != -1 and vim.current.buffer[2] == "":
@@ -89,6 +94,9 @@ nmap <F5> :w<CR>:! clear; specloud<CR>
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
 
+"parse to pep08
+python parse2pep08()
+
 "header
 python create_header()
 
@@ -97,4 +105,4 @@ python create_imports_for_tests()
 
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a
-"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>
+"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>r

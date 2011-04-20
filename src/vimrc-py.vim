@@ -40,17 +40,24 @@ def create_header():
         vim.current.buffer[0] = "#!/usr/bin/python"
         vim.current.buffer.append("# -*- coding: utf-8 -*-")
         vim.current.buffer.append("")
-        vim.current.window.cursor = (3,0)
+        vim.current.buffer.append("")
+        vim.current.window.cursor = (4,0)
+
+#def parse2pep08():
+ #   for line in vim.document.buffer:
+  #      words = line.split(" ")
+   #     if words[0] == "class":
+    #        words[1] = 
 
 def create_imports_for_tests():
     full_filename = vim.current.buffer.name
     filename = full_filename.split("/")[-1]
     name = get_program_name(filename)
     if filename.find("spec") != -1 and vim.current.buffer[2] == "":
-        vim.current.buffer[2] = "import unittest"
+        vim.current.buffer[len(vim.current.buffer)-1] = "import unittest"
         vim.current.buffer.append("from should_dsl import should")
         vim.current.buffer.append("from " + name + " import ")
-        vim.current.window.cursor = (5,len(vim.current.buffer[-1]))
+        vim.current.window.cursor = (6,len(vim.current.buffer[-1]))
         vim.command("tabnew " + name + ".py")
         create_header()
         vim.command(":w")

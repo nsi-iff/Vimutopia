@@ -31,6 +31,9 @@ nmap <F5> :w<CR>:! clear; specloud<CR>
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
 
+"parse to pep08
+python parse2pep08()
+
 "header
 python create_header()
 
@@ -39,4 +42,4 @@ python create_imports_for_tests()
 
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a
-"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>
+"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>r

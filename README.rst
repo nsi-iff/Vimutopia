@@ -47,3 +47,4 @@ Links
 .. [#] http://pypi.python.org/pypi/specloud
 .. [#] http://www.pip-installer.org/en/latest/
 .. [#] http://pydev.org/
+.. [#] http://gcc.gnu.org/

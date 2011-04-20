@@ -18,7 +18,7 @@ retab
 
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "vimrc_py.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "scripts-python.py")).read()
 EOF
 
 " >>Aliases<<
@@ -32,7 +32,7 @@ imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>
 nmap <F9> :! ipython<CR>
 
 "parse to pep08
-python parse2pep08()
+"python parse2pep08()
 
 "header
 python create_header()

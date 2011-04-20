@@ -16,9 +16,9 @@ mkdir $HOME/.vimrc-dumal/doc
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimrc-dumal"                    \
-    --checklist 'Select the vimrc package to install'   0 0 0          \
-    Python   "Python Configuration and Dependences (Pip, Ipython, Spcloud, Should_dsl, Python-dev)"     ON \
-    C   "C Configuration and Dependences (gcc)"     ON \
+    --checklist 'Select the vimrc package and dependencies to install'   0 0 0          \
+    Python   "Python (Pip, Ipython, Spcloud, Should_dsl, Python-dev)"     ON \
+    C   "C (gcc)"     ON \
 )
 
 if [ "$?" -eq 1 ]

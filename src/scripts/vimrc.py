@@ -15,19 +15,18 @@ def paste():
     for line_text in commands.getoutput("xclip -o").split("\n"):
         vim.current.buffer.append(line_text)
 
-def get_all_words():
+def get_all_words(text):
     words = []
-    for line in vim.current.buffer:
+    for line in text.split("\n"):
         words_of_line = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
-        for word in words_of_line:
-            words.append(word)
+        words.extend(words_of_line)
     return words
 
-def get_completation(text):
-    words = get_all_words()
+def get_completation(text, used_text):
+    words = get_all_words(text)
     completed = ""
     for word in words:
-        if word.startswith(text) and word != text:
+        if word.startswith(used_text) and word != used_text:
             if completed:
                 index = get_index_of_equals(completed, word)
                 completed = word[:index]
@@ -48,6 +47,13 @@ def get_used_text(text):
         return ""
     used = text[match.start():]
     return used
+
+def get_unused_text(text):
+    match = re.search("[A-Za-z_]+$", text)
+    if match == None:
+        return text
+    unused = text[:match.start()]
+    return unused
 
 if __is_vim__:
     pass

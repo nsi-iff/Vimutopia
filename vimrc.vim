@@ -30,7 +30,7 @@ nmap <S-F11> :let @/=""<CR>
 
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "vimrc.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "scripts-generic.py")).read()
 EOF
 
 " >> Aliases <<

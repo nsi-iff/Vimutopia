@@ -2,8 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import commands
-import vim
 import re
+try:
+    import vim
+    __is_vim__ = True
+except ImportError:
+    # Isn't in vim. Probably this is a test.
+    __is_vim__ = False
 
 def paste():
     line, row = vim.current.window.cursor
@@ -39,21 +44,22 @@ def get_index_of_equals(text1, text2):
 
 def get_used_text(text):
     match = re.search("[A-Za-z_]+$", text)
-    if match != None:
-        unused = text[:match.start()]
-        used = text[match.start():]
-        return unused + "%s", used
-    return text + "%s", ""
+    if match == None:
+        return ""
+    used = text[match.start():]
+    return used
 
-def auto_complete():
-    line, row = vim.current.window.cursor
-    text = vim.current.buffer[line - 1]
-    unused_text, used_text = get_used_text(text)
-    text = get_completation(used_text)
-    if used_text:
-        if text:
-            vim.current.buffer[line - 1] = unused_text % text
-            vim.current.window.cursor = (line, len(unused_text % text))
-    else:
-        vim.current.buffer[line - 1] = "    " + unused_text % used_text
-        vim.current.window.cursor = (line, row + 4)
+if __is_vim__:
+    pass
+    #def auto_complete():
+    #    line, row = vim.current.window.cursor
+    #    text = vim.current.buffer[line - 1]
+    #    unused_text, used_text = get_used_text(text)
+    #    text = get_completation(used_text)
+    #    if used_text:
+    #        if text:
+    #            vim.current.buffer[line - 1] = unused_text % text
+    #            vim.current.window.cursor = (line, len(unused_text % text))
+    #    else:
+    #        vim.current.buffer[line - 1] = "    " + unused_text % used_text
+    #        vim.current.window.cursor = (line, row + 4)

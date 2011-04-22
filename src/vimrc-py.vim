@@ -24,8 +24,8 @@ EOF
 " >>Aliases<<
 
 " Specloud
-imap <F5> <ESC>:w<CR>:! clear; specloud; echo "Press enter to continue..."; read<CR>a
-nmap <F5> :w<CR>:! clear; specloud<CR>
+imap <F5> <ESC>:wall<CR>:! clear; specloud; echo "Press enter to continue..."; read<CR>a
+nmap <F5> :wall<CR>:! clear; specloud<CR>
 
 " Ipython
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a

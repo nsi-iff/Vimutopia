@@ -25,11 +25,15 @@ def create_header():
         vim.current.buffer.append("")
         vim.current.window.cursor = (4,0)
 
-#def parse2pep08():
- #   for line in vim.document.buffer:
-  #      words = line.split(" ")
-   #     if words[0] == "class":
-    #        words[1] = 
+def parse2pep08():
+    for i, line in enumerate(vim.current.buffer):
+         words = line.split(" ")
+         if words[0] == "class":
+             words[1] = words[1].capitalize() 
+             new_line = ""
+             for word in words:
+                 new_line += word + " "
+             vim.current.buffer[i] = new_line
 
 def create_imports_for_tests():
     full_filename = vim.current.buffer.name

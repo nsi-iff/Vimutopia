@@ -32,7 +32,7 @@ imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>
 nmap <F9> :! ipython<CR>
 
 "parse to pep08
-"python parse2pep08()
+python parse2pep08()
 
 "header
 python create_header()

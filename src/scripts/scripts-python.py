@@ -43,6 +43,8 @@ def create_imports_for_tests():
         vim.current.buffer[len(vim.current.buffer)-1] = "import unittest"
         vim.current.buffer.append("from should_dsl import should")
         vim.current.buffer.append("from " + name + " import ")
+        vim.current.buffer.append("")
+        vim.current.buffer.append("class Test" + name.capitalize() + "(unittest.TestCase):")
         vim.current.window.cursor = (6,len(vim.current.buffer[-1]))
         vim.command("tabnew " + name + ".py")
         create_header()

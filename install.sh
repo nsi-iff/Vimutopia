@@ -14,7 +14,7 @@ if [ -d $HOME/.vimutopia]; then rm -Rf $HOME/.vimutopia; fi
 mkdir $HOME/.vimutopia
 mkdir $HOME/.vimutopia/scripts
 mkdir $HOME/.vimutopia/doc
-cp src/scripts/scripts_generic.py $HOME/.vimrc-dumal/scripts
+cp src/scripts/scripts_generic.py $HOME/.vimutopia/scripts
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimutopia"                    \

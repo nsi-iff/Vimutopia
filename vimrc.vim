@@ -26,7 +26,7 @@ set hlsearch
 
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "scripts_generic.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts_generic.py")).read()
 EOF
 
 " >> Aliases <<

@@ -18,7 +18,7 @@ retab
 
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "scripts-python.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts-python.py")).read()
 EOF
 
 " >>Aliases<<
@@ -38,5 +38,5 @@ python parse2pep08()
 python create_imports_for_tests()
 
 " Help
-"imap <F4> <ESC>:! clear; vim ~/.vimrc-dumal/help-py; echo "Press enter to continue..."; read<CR>a
-"map <F4> :! clear; vim ~/.vimrc-dumal/help-py <CR>r
+"imap <F4> <ESC>:! clear; vim ~/.vimutopia/help-py; echo "Press enter to continue..."; read<CR>a
+"map <F4> :! clear; vim ~/.vimutopia/help-py <CR>r

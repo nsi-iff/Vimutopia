@@ -24,16 +24,16 @@ set backspace=2
 set incsearch
 set hlsearch
 
-" Hide search results
-imap <S-F11> <ESC>:let @/=""<CR>a
-nmap <S-F11> :let @/=""<CR>
-
 python << EOF
 import os
 exec open(os.path.join(os.environ["HOME"], ".vimrc-dumal", "scripts", "scripts-generic.py")).read()
 EOF
 
 " >> Aliases <<
+
+" Hide search results
+imap <S-F11> <ESC>:let @/=""<CR>a
+nmap <S-F11> :let @/=""<CR>
 
 " Copy a text to this file
 vmap <C-c> ya

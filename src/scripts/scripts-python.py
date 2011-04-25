@@ -7,12 +7,6 @@ import os
 import sys
 import re
 
-def get_used_text(text):
-    match = re.search("^(?P<unused> *)(?P<used>.*)$", text)
-    unused = match.groupdict()["unused"]
-    used = match.groupdict()["used"]
-    return unused + "%s", used
-
 def get_program_name(test_name):
     name = test_name.split(".")[0]
     name = "".join(("".join(name.split("spec_")).split("_spec")))
@@ -52,20 +46,3 @@ def create_imports_for_tests():
         revise_header()
         vim.command(":w")
         vim.command("tabp")
-
-def get_completation(text):
-    if text:
-        completer = rlcompleter.Completer()
-        text_completed = ""
-        state = 0
-        completed = ""
-        while completed != None:
-            completed = completer.complete(text, state)
-            state += 1
-            if text_completed:
-                if completed:
-                    index = get_index_of_equals(text_completed, completed)
-                    text_completed = completed[:index]
-            else:
-                text_completed = completed
-        return text_completed

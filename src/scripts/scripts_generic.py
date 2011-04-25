@@ -5,10 +5,24 @@ import commands
 import re
 try:
     import vim
-    __is_vim__ = True
+
+    def auto_complete():
+        line, row = vim.current.window.cursor
+        if row:
+            word = get_used_text(vim.current.line[:row + 1])
+        else:
+            word = ""
+        unused = get_unused_text(vim.current.line[:row + 1])
+        if word:
+            content = "\n".join(vim.current.buffer)
+            completed = get_completation(content, word)
+        else:
+            completed = "    "
+        vim.current.line = unused + completed + vim.current.line[row + 1:]
+        vim.current.window.cursor = (line, row + len(completed))
 except ImportError:
     # Isn't in vim. Probably this is a test.
-    __is_vim__ = False
+    pass
 
 def paste():
     line, row = vim.current.window.cursor
@@ -32,7 +46,10 @@ def get_completation(text, used_text):
                 completed = word[:index]
             else:
                 completed = word
-    return completed
+    if completed:
+        return completed
+    else:
+        return used_text
 
 def get_index_of_equals(text1, text2):
     for index, letter1 in enumerate(text1):
@@ -54,18 +71,3 @@ def get_unused_text(text):
         return text
     unused = text[:match.start()]
     return unused
-
-if __is_vim__:
-    pass
-    #def auto_complete():
-    #    line, row = vim.current.window.cursor
-    #    text = vim.current.buffer[line - 1]
-    #    unused_text, used_text = get_used_text(text)
-    #    text = get_completation(used_text)
-    #    if used_text:
-    #        if text:
-    #            vim.current.buffer[line - 1] = unused_text % text
-    #            vim.current.window.cursor = (line, len(unused_text % text))
-    #    else:
-    #        vim.current.buffer[line - 1] = "    " + unused_text % used_text
-    #        vim.current.window.cursor = (line, row + 4)

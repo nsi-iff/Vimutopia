@@ -14,7 +14,7 @@ if [ -d $HOME/.vimrc-dumal ]; then rm -Rf $HOME/.vimrc-dumal; fi
 mkdir $HOME/.vimrc-dumal
 mkdir $HOME/.vimrc-dumal/scripts
 mkdir $HOME/.vimrc-dumal/doc
-cp src/scripts/scripts-generic.py $HOME/.vimrc-dumal/scripts
+cp src/scripts/scripts_generic.py $HOME/.vimrc-dumal/scripts
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimrc-dumal"                    \

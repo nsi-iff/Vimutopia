@@ -1,1 +1,27 @@
+*help-python* For Vimutopia version 1.0. Last change: 2011 Apr 25
+
+              Vimutopia - python help file
+
+On Python scripts some configurations are default like:
+
+     Autoidentation:  Standardize the identation in block.
+    SmartIdentation:  The identation will be by python pattern in this reserved words(if, elif, else, for, while, try, except, finaly, def, class).
+            TabStop:  Set the tab stop to 4 spaces.
+         Shiftwidth:  Use < ou > with spaces.
+          Expandtab:  Transform tabs in blankspaces.
+
+
+>>> Specloud <<<
+
+Is a tool that uses nosetests and plugins to take BDD specifications easier.
+
+          Specloud:  Press <F5> to run tests in the folder current using it.
+
+>>> Ipython  <<<
+
+Is an interative python shell.
+
+           Ipython:  Press <F9> and the ipython will open in the window current on terminal.
+
+
 

@@ -34,9 +34,6 @@ nmap <F9> :! ipython<CR>
 "parse to pep08
 python parse2pep08()
 
-"header
-python create_header()
-
 "create import for tests
 python create_imports_for_tests()
 

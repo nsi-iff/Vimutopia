@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import rlcompleter
@@ -7,42 +7,59 @@ import os
 import sys
 import re
 
+cb = vim.current.buffer
+
 def get_program_name(test_name):
     name = test_name.split(".")[0]
     name = "".join(("".join(name.split("spec_")).split("_spec")))
     return "".join(("".join(name.split("spec-")).split("-spec")))
 
+def revise_imports(line, i):
+    words = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
+    if words:
+        if (words[0] == "import") and (len(words) > 2):
+            cb[i] = "import " + words[1]
+            for ind, imp in enumerate(words[2:]):
+                cb.append("import " + imp, i + ind + 1)
+
 def revise_header():
-    if vim.current.buffer[0] != "#!/usr/bin/python":
-        vim.current.buffer.append("#!/usr/bin/python", 0)
-    if vim.current.buffer[1] != "# -*- coding: utf-8 -*-":
-        vim.current.buffer.append("# -*- coding: utf-8 -*-", 1)
-        vim.current.buffer.append("", 2)
+    if cb[0] != "#!/usr/bin/env python":
+        cb.append("#!/usr/bin/env python", 0)
+    if cb[1] != "# -*- coding: utf-8 -*-":
+        cb.append("# -*- coding: utf-8 -*-", 1)
+        cb.append("")
 
 def revise_name_class(line, i):
     words = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
     if words:
         if words[0] == "class":
-            vim.current.buffer[i] = line.replace(words[1], words[1].capitalize())
+            cb[i] = line.replace(words[1],  words[1].capitalize())
 
 def parse2pep08():
-    for i, line in enumerate(vim.current.buffer):
+    revise_header()
+    for i,line in enumerate(cb):
         revise_name_class(line, i)
-        revise_header()
+        revise_imports(line, i)
+
+def insert_header():
+    vim.current.buffer[0] = "#!/usr/bin/env python"
+    vim.current.buffer.append("# -*- coding: utf-8 -*-")
+    vim.current.buffer.append("")
 
 def create_imports_for_tests():
-    full_filename = vim.current.buffer.name
+    full_filename = cb.name
     filename = full_filename.split("/")[-1]
     name = get_program_name(filename)
-    if filename.find("spec") != -1 and vim.current.buffer[2] == "" and len(vim.current.buffer) < 5:
-        vim.current.buffer[len(vim.current.buffer)-1] = "import unittest"
-        vim.current.buffer.append("from should_dsl import should")
-        vim.current.buffer.append("from " + name + " import ")
-        vim.current.buffer.append("")
-        vim.current.buffer.append("class Test" + name.capitalize() + "(unittest.TestCase):")
+    if filename.find("spec") != -1 and cb[2] == "" and len(cb) < 5:
+        cb[len(cb)-1] = "import unittest"
+        cb.append("from should_dsl import should")
+        cb.append("from " + name + " import ")
+        cb.append("")
+        cb.append("class Test" + name.capitalize() + "(unittest.TestCase):")
         vim.command(":w")
-        vim.current.window.cursor = (6,len(vim.current.buffer[-1]))
+        vim.current.window.cursor = (6, len(cb[-1]))
         vim.command("tabnew " + name + ".py")
-        revise_header()
+        insert_header()
         vim.command(":w")
         vim.command("tabp")
+

@@ -58,4 +58,7 @@ nnoremap <C-Left>  :tabprevious<CR>
 imap <C-w> <ESC>:w<CR>a
 nnoremap <C-w> :w<CR>
 
+" Undo
+imap <C-z> <ESC>ua
+
 " Vimrcs to specific file types [added dynamically]

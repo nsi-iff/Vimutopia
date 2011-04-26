@@ -39,10 +39,10 @@ do
         pip install should_dsl specloud
         cp src/vimrc-py.vim $HOME/.vimutopia/vimrc-py.vim
         cp doc/help-py.man $HOME/.vimutopia/doc/help-py.man
+        cp src/scripts/scripts_python.py $HOME/.vimutopia/scripts
         echo "autocmd BufNewFile,BufRead *.py source $HOME/.vimutopia/vimrc-py.vim" >> $HOME/.vimrc
-        cp src/scripts/scripts-python.py $HOME/.vimutopia/scripts
-    fi    
-    
+    fi
+
     if [ $opcao == 'C' ]
     then
         apt-get install -y gcc

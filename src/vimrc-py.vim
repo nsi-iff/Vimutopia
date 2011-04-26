@@ -18,7 +18,7 @@ retab
 
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts-python.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts_python.py")).read()
 EOF
 
 " >>Aliases<<

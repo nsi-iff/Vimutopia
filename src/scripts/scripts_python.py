@@ -1,13 +1,19 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import rlcompleter
-import vim
+try:
+    import vim
+    cb = vim.current.buffer
+except ImportError:
+    # Isn't in vim. Probably this is a test.
+    pass
 import os
 import sys
 import re
-
-cb = vim.current.buffer
 
 def get_program_name(test_name):
     name = test_name.split(".")[0]
@@ -35,11 +41,19 @@ def revise_name_class(line, i):
         if words[0] == "class":
             cb[i] = line.replace(words[1],  words[1].capitalize())
 
+def revise_parenthesis(line):
+    while "( " in line:
+        line = line.replace("( ", "(")
+    while " )" in line:
+        line = line.replace(" )", ")")
+    return line
+
 def parse2pep08():
     revise_header()
     for i,line in enumerate(cb):
         revise_name_class(line, i)
         revise_imports(line, i)
+        vim.current.buffer[i] = revise_parenthesis(line)
 
 def insert_header():
     vim.current.buffer[0] = "#!/usr/bin/env python"

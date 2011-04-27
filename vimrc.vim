@@ -46,6 +46,7 @@ nmap <C-v> p
 imap <TAB> <ESC>:python auto_complete()<CR>a
 
 " Open a new tab
+imap <C-t> <ESC> :tabnew 
 nnoremap <C-t>     :tabnew 
 
 " Move between tabs

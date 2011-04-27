@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -10,9 +12,11 @@ try:
         line, row = vim.current.window.cursor
         if row:
             word = get_used_text(vim.current.line[:row + 1])
+            unused = get_unused_text(vim.current.line[:row + 1])
         else:
             word = ""
-        unused = get_unused_text(vim.current.line[:row + 1])
+            unused = ""
+            row -= 1
         if word:
             content = "\n".join(vim.current.buffer)
             completed = get_completation(content, word)
@@ -71,3 +75,4 @@ def get_unused_text(text):
         return text
     unused = text[:match.start()]
     return unused
+

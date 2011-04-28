@@ -51,6 +51,13 @@ def revise_spaces_in_end_of_line(line):
         line = line[:-1]
     return line
 
+def revise_spaces_around_equals(line):
+    while "=  " in line:
+        line = line.replace("=  ", "= ")
+    while "  =" in line:
+        line = line.replace("  =", " =")
+    return line
+
 def revise_spaces_in_expressions(line):
     for caracter1, caracter2 in [["(",")"],["[","]"],["{","}"]]:
         while caracter1 + " " in line:

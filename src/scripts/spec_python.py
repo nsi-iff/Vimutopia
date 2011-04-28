@@ -4,8 +4,7 @@
 import unittest
 from should_dsl import should
 from scripts_python import (revise_spaces_in_expressions, revise_name_class, revise_two_points,
-revise_spaces_in_end_of_line)
-
+revise_spaces_in_end_of_line, revise_spaces_around_equals)
 
 class Testpython(unittest.TestCase):
 
@@ -27,6 +26,9 @@ class Testpython(unittest.TestCase):
         revise_two_points("def foo():     ") |should| equal_to("def foo(): ")
         revise_two_points("def foo(): print") |should| equal_to("def foo(): print")
 
-    def test_remove_in_final_line(self):
+    def test_remove_spaces_in_end_line(self):
         revise_spaces_in_end_of_line("a = b + 1    ") |should| equal_to("a = b + 1")
         revise_spaces_in_end_of_line("a = b + 1") |should| equal_to("a = b + 1")
+
+    def test_remove_more_than_one_space_around_of_equals(self):
+        revise_spaces_around_equals("a  =  a + 1") |should| equal_to("a = a + 1")

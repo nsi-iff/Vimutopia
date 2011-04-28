@@ -52,10 +52,21 @@ def revise_spaces_in_end_of_line(line):
     return line
 
 def revise_spaces_around_equals(line):
-    while "=  " in line:
-        line = line.replace("=  ", "= ")
-    while "  =" in line:
-        line = line.replace("  =", " =")
+    while "= " in line:
+        line = line.replace("= ", "=")
+    while " =" in line:
+        line = line.replace(" =", "=")
+    return line.replace("=", " = ")
+
+def revise_spaces_around_operators(line):
+    operators_list = ["+", "-", "/", "**", "%", ">>", "<<", "&", "|", "^", "~"
+    "<", ">", ">=", "<=", "==", "!="]
+    for operator in operators_list:
+        while operator + " " in line:
+            line = line.replace(operator + " ", operator)
+        while " " + operator in line:
+            line = line.replace(" " + operator, operator)
+        line = line.replace(operator, " " + operator + " ")
     return line
 
 def revise_spaces_in_expressions(line):

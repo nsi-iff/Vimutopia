@@ -46,11 +46,21 @@ def revise_two_points(line):
         line = line.replace(":  ", ": ")
     return line
 
-def revise_parenthesis(line):
-    while "( " in line:
-        line = line.replace("( ", "(")
-    while " )" in line:
-        line = line.replace(" )", ")")
+def revise_spaces_in_end_of_line(line):
+    while line.endswith(" "):
+        line = line[:-1]
+    return line
+
+def revise_spaces_in_expressions(line):
+    for caracter1, caracter2 in [["(",")"],["[","]"],["{","}"]]:
+        while caracter1 + " " in line:
+            line = line.replace(caracter1 + " ", caracter1)
+        while " " + caracter1 in line:
+            line = line.replace(" " + caracter1, caracter1)
+        while " " + caracter2 in line:
+            line = line.replace(" " + caracter2, caracter2)
+    for caracter in "(", "[", "{":
+        line = line.replace("," + caracter, ", " + caracter)
     return line
 
 def parse2pep08():
@@ -59,7 +69,7 @@ def parse2pep08():
         revise_imports(line, i)
         vim.current.buffer[i] = revise_two_points(line)
         vim.current.buffer[i] = revise_name_class(line)
-        vim.current.buffer[i] = revise_parenthesis(line)
+        vim.current.buffer[i] = revise_spaces_in_expressions(line)
 
 def insert_header():
     vim.current.buffer[0] = "#!/usr/bin/env python"
@@ -82,5 +92,3 @@ def create_imports_for_tests():
         insert_header()
         vim.command(":w")
         vim.command("tabp")
-
-

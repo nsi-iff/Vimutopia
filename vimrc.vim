@@ -12,7 +12,7 @@ set laststatus=2
 
 " Show markup characters
 set list
-set listchars=eol:¬,trail:▸
+set listchars=eol:¬,trail:▸,tab:\ \ 
 
 " Use the mouse
 set mouse=a

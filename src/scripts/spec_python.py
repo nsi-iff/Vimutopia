@@ -37,14 +37,15 @@ class Testpython(unittest.TestCase):
     def test_remove_more_than_one_space_around_of_equals(self):
         revise_spaces_around_equals("a  =  a + 1") |should| equal_to("a = a + 1")
         revise_spaces_around_equals("a\" = \"a + 1") |should| equal_to("a\" = \"a + 1")
-        revise_spaces_around_equals("a = \"a + -5\"") |should| equal_to("a = \"a + -5\"")
+        revise_spaces_around_equals("a = \"a + -5 \"") |should| equal_to("a = \"a + -5 \"")
 
     def test_revise_spaces_around_operators(self):
         revise_spaces_around_operators("a = a+2") |should| equal_to("a = a + 2")
         revise_spaces_around_operators("a = a + 2") |should| equal_to("a = a + 2")
         revise_spaces_around_operators("a = \"a + \" 2") |should| equal_to("a = \"a + \" 2")
-        revise_spaces_around_operators("a = \"a + -5\"") |should| equal_to("a = \"a + -5\"")
+        revise_spaces_around_operators("a = \"a + -5 \"") |should| equal_to("a = \"a + -5 \"")
         revise_spaces_around_operators("a = -   5") |should| equal_to("a = -5 ")
+        revise_spaces_around_operators("a = -   5.7") |should| equal_to("a = -5.7 ")
         revise_spaces_around_operators("a = 2  -5") |should| equal_to("a = 2 - 5")
         revise_spaces_around_operators("#-*-") |should| equal_to("#-*-")
 

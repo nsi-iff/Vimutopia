@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from should_dsl import should
@@ -6,7 +6,7 @@ import scripts_generic
 import unittest
 
 
-class Testscripts_generic(unittest.TestCase):     
+class Testscripts_generic(unittest.TestCase):
     """Test the scripts_generic python functions"""
 
     def test_used_text(self):

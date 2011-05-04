@@ -66,7 +66,7 @@ def revise_spaces_around_operators(line):
     for i in range(0, len(line), 2):
         if not(line[i].startswith("#")):
             line[i] = re.sub(r" *(>=|<=|\+=|-=|\*=|\+|\-|\*\*|\*|>|<|%) *", r" \1 ", line[i])
-            line[i] = re.sub(r" *- (\d) *", r" -\1 ", line[i])
+            line[i] = re.sub(r"= *- (\d.\d|\d) *", r"= -\1 ", line[i])
             line[i] = re.sub(r" *(\d) *- *(\d) *", r" \1 - \2", line[i])
     return "\"".join(line)
 

@@ -61,12 +61,20 @@ def revise_spaces_around_equals(line):
         line[i] = re.sub(r" *(==|!=|>=|<=|=|\+=|-=|\*=) *", r" \1 ", line[i])
     return "\"".join(line)
 
+def revise_empty_lines_after_class_definition(line, i):
+    if line.find("class") == 0:
+        if vim.current.buffer[i -1] != "":
+             vim.current.buffer.append("", i)
+             vim.current.buffer.append("", i)
+             return 2
+    return 0
+
 def revise_spaces_around_operators(line):
     line = line.split("\"")
     for i in range(0, len(line), 2):
         if not(line[i].startswith("#")):
             line[i] = re.sub(r" *(>=|<=|\+=|-=|\*=|\+|\-|\*\*|\*|>|<|%) *", r" \1 ", line[i])
-            line[i] = re.sub(r"= *- (\d.\d|\d) *", r"= -\1 ", line[i])
+            line[i] = re.sub(r" *- (\d.\d|\d) *", r" -\1 ", line[i])
             line[i] = re.sub(r" *(\d) *- *(\d) *", r" \1 - \2", line[i])
     return "\"".join(line)
 
@@ -85,7 +93,9 @@ def revise_spaces_in_expressions(line):
 
 def parse2pep08():
     revise_header()
-    for i, line in enumerate(vim.current.buffer):
+    i = 0
+    while i < (len(vim.current.buffer)):
+        line = vim.current.buffer[i]
         line = revise_imports(line, i)
         line = revise_name_class(line)
         line = revise_spaces_around_equals(line)
@@ -93,7 +103,9 @@ def parse2pep08():
         line = revise_spaces_in_expressions(line)
         line = revise_two_points(line)
         line = revise_spaces_in_end_of_line(line)
+        i += revise_empty_lines_after_class_definition(line, i)
         vim.current.buffer[i] = line
+        i += 1
 
 def insert_header():
     vim.current.buffer[0] = "#!/usr/bin/env python"

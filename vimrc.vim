@@ -24,10 +24,12 @@ set backspace=2
 set incsearch
 set hlsearch
 
+if has("python")
 python << EOF
 import os
 exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts_generic.py")).read()
 EOF
+endif
 
 " >> Aliases <<
 
@@ -42,8 +44,10 @@ vmap <C-c> ya
 imap <C-v> <ESC>pa
 nmap <C-v> p
 
-" Auto-complete words
-imap <TAB> <ESC>:python auto_complete()<CR>a
+if has("python")
+	" Auto-complete words
+	imap <TAB> <ESC>:python auto_complete()<CR>a
+endif
 
 " Open a new tab
 imap <C-t> <ESC> :tabnew 

@@ -16,10 +16,12 @@ set expandtab
 " Convert existent tabs
 retab
 
+if has("python")
 python << EOF
 import os
 exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts_python.py")).read()
 EOF
+endif
 
 " >>Aliases<<
 
@@ -31,11 +33,13 @@ nmap <F5> :wall<CR>:! clear; specloud<CR>
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
 
-"parse to pep08
-python parse2pep08()
+if has("python")
+	"parse to pep08
+	python parse2pep08()
 
-"create import for tests
-python create_imports_for_tests()
+	"create import for tests
+	python create_imports_for_tests()
+endif
 
 " Help
 "imap <F4> <ESC>:! clear; vim ~/.vimutopia/help-py; echo "Press enter to continue..."; read<CR>a

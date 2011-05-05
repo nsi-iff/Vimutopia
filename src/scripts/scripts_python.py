@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import rlcompleter
 try:
     import vim
@@ -73,10 +74,16 @@ def revise_empty_lines_before_methods_definition(line, i):
     words = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
     if words:
         if words[0] == "def":
-            if vim.current.buffer[i - 1] != "":
+            if vim.current.buffer[i -1] != "":
                 vim.current.buffer.append("", i)
                 return 1
     return 0
+
+def revise_empty_lines(line, i):
+    if i > 2 and line == "":
+        del vim.current.buffer[i]
+        return True
+    return False
 
 def revise_spaces_around_operators(line):
     line = line.split("\"")
@@ -112,6 +119,8 @@ def parse2pep08():
         line = revise_spaces_in_expressions(line)
         line = revise_two_points(line)
         line = revise_spaces_in_end_of_line(line)
+        if revise_empty_lines(line, i):
+            continue
         i += revise_empty_lines_before_class_definition(line, i)
         i += revise_empty_lines_before_methods_definition(line, i)
         vim.current.buffer[i] = line

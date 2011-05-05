@@ -61,12 +61,21 @@ def revise_spaces_around_equals(line):
         line[i] = re.sub(r" *(==|!=|>=|<=|=|\+=|-=|\*=) *", r" \1 ", line[i])
     return "\"".join(line)
 
-def revise_empty_lines_after_class_definition(line, i):
+def revise_empty_lines_before_class_definition(line, i):
     if line.find("class") == 0:
         if vim.current.buffer[i -1] != "":
              vim.current.buffer.append("", i)
              vim.current.buffer.append("", i)
              return 2
+    return 0
+
+def revise_empty_lines_before_methods_definition(line, i):
+    words = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
+    if words:
+        if words[0] == "def":
+            if vim.current.buffer[i - 1] != "":
+                vim.current.buffer.append("", i)
+                return 1
     return 0
 
 def revise_spaces_around_operators(line):
@@ -103,7 +112,8 @@ def parse2pep08():
         line = revise_spaces_in_expressions(line)
         line = revise_two_points(line)
         line = revise_spaces_in_end_of_line(line)
-        i += revise_empty_lines_after_class_definition(line, i)
+        i += revise_empty_lines_before_class_definition(line, i)
+        i += revise_empty_lines_before_methods_definition(line, i)
         vim.current.buffer[i] = line
         i += 1
 

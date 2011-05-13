@@ -22,3 +22,7 @@ nmap <F9> :w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
 " Run
 imap <F5> <ESC>:! clear; ./%:r<CR>
 nmap <F5> :! clear; ./%:r<CR>
+
+" igcc
+imap <F6> <ESC>:! clear; ~/.vimutopia/igcc/igcc; echo -n "Press enter to continue..."; read<CR>a
+nmap <F6> :! ~/.vimutopia/igcc/igcc<CR>

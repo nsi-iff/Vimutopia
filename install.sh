@@ -46,6 +46,10 @@ do
     if [ $opcao == 'C' ]
     then
         apt-get install -y gcc
+        wget "http://downloads.sourceforge.net/project/igcc/igcc-0.1.tar.bz2"
+        tar -xjf "igcc-0.1.tar.bz2"
+        rm igcc-0.1.tar.bz2
+        mv igcc-0.1 $HOME/.vimutopia/igcc
         cp src/vimrc-c.vim $HOME/.vimutopia/vimrc-c.vim
         cp doc/help-c.man $HOME/.vimutopia/doc/help-c.man
         echo "autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp source $HOME/.vimutopia/vimrc-c.vim" >> $HOME/.vimrc

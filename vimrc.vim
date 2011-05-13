@@ -1,3 +1,6 @@
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Put line numbers
 set number
 
@@ -65,5 +68,9 @@ nnoremap <C-w> :w<CR>
 
 " Undo
 imap <C-z> <ESC>ua
+
+" NerdTree
+nmap <F2> :NERDTreeToggle<CR>
+imap <F2> <Esc>:NERDTreeToggle<CR>a
 
 " Vimrcs to specific file types [added dynamically]

@@ -15,6 +15,8 @@ mkdir $HOME/.vimutopia
 mkdir $HOME/.vimutopia/scripts
 mkdir $HOME/.vimutopia/doc
 cp src/scripts/scripts_generic.py $HOME/.vimutopia/scripts
+cp -R autoload $HOME/.vim/autoload
+cp -R bundle $HOME/.vim/bundle
 
 opcoes=$( dialog --stdout --separate-output                                                                 \
     --title "vimutopia"                    \

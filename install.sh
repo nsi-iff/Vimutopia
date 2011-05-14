@@ -22,11 +22,17 @@ function warning
 
 function install_global_dependencies
 {
+    apt-get install -y dialog > /dev/null
+    if [ $? != 0 ]
+    then
+        echo "An error occurred during global dependencies installation"
+        exit 1
+    fi
     dialog                                         \
         --title "Package installation"             \
         --infobox "Installing global dependencies" \
         0 0
-    apt-get install -y dialog xclip vim > /dev/null
+    apt-get install -y xclip vim > /dev/null
     if [ $? != 0 ]
     then
         error "An error occurred during global dependencies installation"
@@ -216,8 +222,8 @@ function finished
 
 function main
 {
-    warning
     install_global_dependencies
+    warning
     copy_importtant_files
     select_packages
     install_specific_dependencies

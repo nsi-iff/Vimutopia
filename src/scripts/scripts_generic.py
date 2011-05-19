@@ -1,37 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 
 import commands
 import re
-try:
-    import vim
-
-    def auto_complete():
-        line, row = vim.current.window.cursor
-        if row:
-            word = get_used_text(vim.current.line[:row + 1])
-            unused = get_unused_text(vim.current.line[:row + 1])
-        else:
-            word = ""
-            unused = ""
-            row -= 1
-        if word:
-            content = "\n".join(vim.current.buffer)
-            completed = get_completation(content, word)
-        else:
-            completed = "    "
-        vim.current.line = unused + completed + vim.current.line[row + 1:]
-        vim.current.window.cursor = (line, row + len(completed))
-except ImportError:
-    # Isn't in vim. Probably this is a test.
-    pass
-
-def paste():
-    line, row = vim.current.window.cursor
-    for line_text in commands.getoutput("xclip -o").split("\n"):
-        vim.current.buffer.append(line_text)
 
 def get_all_words(text):
     words = []
@@ -75,4 +46,26 @@ def get_unused_text(text):
         return text
     unused = text[:match.start()]
     return unused
+if __name__ == "__main__":
+    try:
+        import vim
 
+        def auto_complete():
+            line, row = vim.current.window.cursor
+            if row:
+                word = get_used_text(vim.current.line[:row + 1])
+                unused = get_unused_text(vim.current.line[:row + 1])
+            else:
+                word = ""
+                unused = ""
+                row -= 1
+            if word:
+                content = "\n".join(vim.current.buffer)
+                completed = get_completation(content, word)
+            else:
+                completed = "    "
+            vim.current.line = unused + completed + vim.current.line[row + 1:]
+            vim.current.window.cursor = (line, row + len(completed))
+    except ImportError:
+        # Isn't in vim. Probably this is a test.
+        pass

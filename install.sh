@@ -80,6 +80,14 @@ function copy_importtant_files
     then
         error "Can't copy a script"
     fi
+    if [ ! -d $HOME/.vim ]
+    then
+        mkdir $HOME/.vim
+        if [ $? != 0 ]
+        then
+            error "Can't create .vim directory"
+        fi
+    fi
     cp -R autoload $HOME/.vim/autoload
     if [ $? != 0 ]
     then

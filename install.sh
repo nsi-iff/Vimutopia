@@ -223,7 +223,7 @@ function install_specific_dependencies
 function finished
 {
     dialog --title "Aviso"               \
-        --msgbox "Instalação concluída!" \
+        --msgbox "Instalation finished!" \
         0 0
     clear
 }

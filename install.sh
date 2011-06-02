@@ -20,6 +20,24 @@ function warning
     fi
 }
 
+function git_submodules
+{
+    dialog                                  \
+        --title "GIT Submodules"            \
+        --infobox "Initializing submodules" \
+        0 0
+    git submodule init > /dev/null
+    if [ $? != 0 ]
+    then
+        error "An error occurred while trying init submodules"
+    fi
+    git submodule update > /dev/null
+    if [ $? != 0 ]
+    then
+        error "An error occurred while trying update submodules"
+    fi
+}
+
 function install_global_dependencies
 {
     apt-get install -y dialog > /dev/null
@@ -222,7 +240,7 @@ function install_specific_dependencies
 
 function finished
 {
-    dialog --title "Aviso"               \
+    dialog --title "Warning"               \
         --msgbox "Instalation finished!" \
         0 0
     clear
@@ -232,6 +250,7 @@ function main
 {
     install_global_dependencies
     warning
+    git_submodules
     copy_importtant_files
     select_packages
     install_specific_dependencies

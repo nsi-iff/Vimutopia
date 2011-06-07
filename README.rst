@@ -17,7 +17,8 @@ Installing
 
 To install you have to run in terminal:
 
-    # ./install.sh
+    # ./install_dependencies.sh
+    $ ./install.sh
 
 
 Python especifications

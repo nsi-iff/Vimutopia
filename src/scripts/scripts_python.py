@@ -153,5 +153,5 @@ def run_specloud():
     for buffer_ in vim.buffers:
         name = os.path.basename(buffer_.name)
         if name.endswith(".py"):
-            command += "--cover-package \"%s\"" % name[:-3]
+            command += "--cover-package \"%s\" " % name[:-3]
     vim.command(command)

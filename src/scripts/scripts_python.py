@@ -10,6 +10,7 @@ except ImportError:
 import os
 import sys
 import re
+import subprocess
 
 def get_program_name(test_name):
     name = test_name.split(".")[0]
@@ -155,3 +156,9 @@ def run_specloud():
         if name.endswith(".py"):
             command += "--cover-package \"%s\" " % name[:-3]
     vim.command(command)
+    process = subprocess.Popen("specloud", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    status = os.waitpid(process.pid, 0)[1]
+    if status == 0:
+        vim.command("highlight StatusLine ctermfg=2")
+    else:
+        vim.command("highlight StatusLine ctermfg=1")

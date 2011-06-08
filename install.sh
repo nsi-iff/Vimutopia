@@ -38,26 +38,7 @@ function git_submodules
     fi
 }
 
-function install_global_dependencies
-{
-    apt-get install -y dialog > /dev/null
-    if [ $? != 0 ]
-    then
-        echo "An error occurred during global dependencies installation"
-        exit 1
-    fi
-    dialog                                         \
-        --title "Package installation"             \
-        --infobox "Installing global dependencies" \
-        0 0
-    apt-get install -y xclip vim > /dev/null
-    if [ $? != 0 ]
-    then
-        error "An error occurred during global dependencies installation"
-    fi
-}
-
-function copy_importtant_files
+function copy_important_files
 {
     dialog                                  \
         --title "File copy"                 \
@@ -138,21 +119,6 @@ function install_python_dependencies
         --title "Package installation"             \
         --infobox "Installing python dependencies" \
         0 0
-    apt-get install -y python-setuptools ipython python-dev > /dev/null
-    if [ $? != 0 ]
-    then
-        error "An error occurred during python dependencies installation"
-    fi
-    easy_install pip > /dev/null
-    if [ $? != 0 ]
-    then
-        error "An error occurred during pip installation"
-    fi
-    pip install should_dsl specloud > /dev/null
-    if [ $? != 0 ]
-    then
-        error "An error occurred during python dependencies installation"
-    fi
     cp src/vimrc-py.vim $HOME/.vimutopia/vimrc-py.vim
     if [ $? != 0 ]
     then
@@ -181,11 +147,6 @@ function install_c_dependencies
         --title "Package installation"        \
         --infobox "Installing C dependencies" \
         0 0
-    apt-get install -y gcc > /dev/null
-    if [ $? != 0 ]
-    then
-        error "An error occurred during C dependencies installation"
-    fi
     wget "http://downloads.sourceforge.net/project/igcc/igcc-0.1.tar.bz2" --quiet
     if [ $? != 0 ]
     then
@@ -248,10 +209,9 @@ function finished
 
 function main
 {
-    install_global_dependencies
     warning
     git_submodules
-    copy_importtant_files
+    copy_important_files
     select_packages
     install_specific_dependencies
     finished

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 import rlcompleter
 try:
     import vim
@@ -148,3 +147,11 @@ def create_imports_for_tests():
         insert_header()
         vim.command(":w")
         vim.command("tabp")
+
+def run_specloud():
+    command = "! specloud --with-cover "
+    for buffer_ in vim.buffers:
+        name = os.path.basename(buffer_.name)
+        if name.endswith(".py"):
+            command += "--cover-package \"%s\"" % name[:-3]
+    vim.command(command)

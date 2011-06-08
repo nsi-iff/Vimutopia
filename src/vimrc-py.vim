@@ -26,8 +26,8 @@ endif
 " >>Aliases<<
 
 " Specloud
-imap <F5> <ESC>:wall<CR>:! clear; specloud; echo "Press enter to continue..."; read<CR>a
-nmap <F5> :wall<CR>:! clear; specloud<CR>
+imap <F5> <ESC>:wall<CR>:! clear<CR>:python run_specloud()<CR>:! echo "Press enter to continue..."; read<CR>a
+nmap <F5> :wall<CR>:! clear<CR>:python run_specloud()<CR>
 
 " Ipython
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
@@ -35,10 +35,10 @@ nmap <F9> :! ipython<CR>
 
 if has("python")
 	"parse to pep08
-	python parse2pep08()
+"	python parse2pep08()
 
 	"create import for tests
-	python create_imports_for_tests()
+"	python create_imports_for_tests()
 endif
 
 " Help

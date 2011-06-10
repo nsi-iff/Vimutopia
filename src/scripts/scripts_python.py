@@ -150,7 +150,7 @@ def create_imports_for_tests():
         vim.command("tabp")
 
 def run_specloud():
-    command = "! specloud --with-cover "
+    command = "! specloud --with-cover --cover-erase "
     for buffer_ in vim.buffers:
         name = os.path.basename(buffer_.name)
         if name.endswith(".py"):

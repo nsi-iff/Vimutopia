@@ -167,7 +167,9 @@ def run_specloud():
 def counter(sec):
     line = r"%f\ \ \ \ %l,%c\ \ \ \ %p%%\ \ \ \ "
     if sec:
-        vim.command("set statusline=%s%s" % (line, sec))
+        minutes = sec / 60
+        seconds = sec % 60
+        vim.command("set statusline=%s%02d:%02d" % (line, minutes, seconds))
         vim.command("redraw")
         timer = Timer(1, counter, args=[sec - 1])
         timer.start()

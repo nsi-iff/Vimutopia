@@ -40,13 +40,6 @@ endif
 imap <S-F11> <ESC>:let @/=""<CR>a
 nmap <S-F11> :let @/=""<CR>
 
-" Copy a text to this file
-vmap <C-c> ya
-
-" Paste a text from this file
-imap <C-v> <ESC>pa
-nmap <C-v> p
-
 if has("python")
 	" Auto-complete words
 	imap <TAB> <ESC>:python auto_complete()<CR>a

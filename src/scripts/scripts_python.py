@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from threading import Timer
 import rlcompleter
 try:
     import vim
@@ -162,3 +163,14 @@ def run_specloud():
         vim.command("highlight StatusLine ctermfg=2")
     else:
         vim.command("highlight StatusLine ctermfg=1")
+
+def counter(sec):
+    line = r"%f\ \ \ \ %l,%c\ \ \ \ %p%%\ \ \ \ "
+    if sec:
+        vim.command("set statusline=%s%s" % (line, sec))
+        vim.command("redraw")
+        timer = Timer(1, counter, args=[sec - 1])
+        timer.start()
+    else:
+        vim.command("set statusline=%stime\\ finished" % line)
+        vim.command("redraw")

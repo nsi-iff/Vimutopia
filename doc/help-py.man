@@ -15,13 +15,13 @@ On Python scripts some configurations are default like:
 
 Is a tool that uses nosetests and plugins to take BDD specifications easier.
 
-          Specloud:  Press <F5> to run tests in the folder current using it.
+          Specloud:  Press <F5> to run tests in the current folder using it.
 
 >>> Ipython  <<<
 
 Is an interative python shell.
 
-           Ipython:  Press <F9> and the ipython will open in the window current on terminal.
+           Ipython:  Press <F9> and the ipython will open in the current window on terminal.
 
 
 

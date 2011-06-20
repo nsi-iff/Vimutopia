@@ -6,6 +6,7 @@ set number
 
 " Syntax colored
 syntax on
+set background=dark
 
 " Show ruler
 set ruler

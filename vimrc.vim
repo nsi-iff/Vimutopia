@@ -56,10 +56,6 @@ imap <C-Left> <ESC>:tabprevious<CR>a
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-Left>  :tabprevious<CR>
 
-" Save
-imap <C-w> <ESC>:w<CR>a
-nnoremap <C-w> :w<CR>
-
 " Undo
 imap <C-z> <ESC>ua
 

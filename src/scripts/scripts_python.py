@@ -164,6 +164,10 @@ def run_specloud():
     else:
         vim.command("highlight StatusLine ctermfg=1")
 
+def run_python():
+    command = "! python " + str(vim.current.buffer)[8:-1]
+    vim.command(command)
+
 def counter(sec):
     line = r"%f\ \ \ \ %l,%c\ \ \ \ %p%%\ \ \ \ "
     if sec:

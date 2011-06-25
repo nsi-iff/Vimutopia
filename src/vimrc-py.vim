@@ -33,6 +33,10 @@ nmap <F5> :wall<CR>:! clear<CR>:python run_specloud()<CR>
 imap <F9> <ESC>:! clear; ipython; echo -n "Press enter to continue..."; read<CR>a
 nmap <F9> :! ipython<CR>
 
+" Python 'arquivo'
+imap <F7> <ESC>:wall<CR>:! clear<CR>:python run_python()<CR>:! read<CR>a
+nmap <F7> :wall<CR>:! clear<CR>:python run_python()<CR>
+
 if has("python")
 	"parse to pep08
 "	python parse2pep08()

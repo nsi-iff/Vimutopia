@@ -2,7 +2,7 @@
 set autoindent
 
 " Moving indentation
-set smartindent cinwords=if,elif,else,for,while,try,except,finaly,def,class
+set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Set tab stop to 4
 set tabstop=4

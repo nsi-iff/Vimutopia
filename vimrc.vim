@@ -39,8 +39,8 @@ endif
 
 " Reload .vimrc file (F12)
 map ,v :e $HOME/.vimrc /.vimutopia/vimrc-py.vim /.vimutopia/vimrc-c.vim<CR>
-nmap <F12> : <C-u>source ~/.vimrc<CR>: <C-u>source ~/.vimutopia/vimrc-py.vim<CR>: <C-u>source ~/.vimutopia/vimrc-c.vim<CR> 
-imap <F12> <ESC>: <C-u>source ~/.vimrc<CR>: <C-u>source ~/.vimutopia/vimrc-py.vim<CR>: <C-u>source ~/.vimutopia/vimrc-c.vim<CR>
+nmap <F12> : <C-u>source ~/.vimrc<CR>: <C-u>source ~/.vimutopia/vimrc-py.vim<CR>: <C-u>source ~/.vimutopia/vimrc-c.vim<CR>: echo "VIM's files reloaded"<CR>
+imap <F12> <ESC>: <C-u>source ~/.vimrc<CR>: <C-u>source ~/.vimutopia/vimrc-py.vim<CR>: <C-u>source ~/.vimutopia/vimrc-c.vim<CR>a
 
 " Hide search results
 imap <S-F11> <ESC>:let @/=""<CR>a

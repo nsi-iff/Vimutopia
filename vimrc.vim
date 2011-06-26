@@ -37,6 +37,11 @@ endif
 
 " >> Aliases <<
 
+" Reload .vimrc file (F12)
+map ,v :e $HOME/.vimrc <CR>
+nmap <F12> : <C-u>source ~/.vimrc<CR> 
+imap <F12> <ESC>: <C-u>source ~/.vimrc<CR>
+
 " Hide search results
 imap <S-F11> <ESC>:let @/=""<CR>a
 nmap <S-F11> :let @/=""<CR>

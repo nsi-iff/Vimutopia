@@ -37,6 +37,11 @@ endif
 
 " >> Aliases <<
 
+" (,[,{ Autocomplete
+imap [ []<left>
+imap ( ()<left>
+imap { {}<left>
+
 " Reload .vimrc file (F12)
 map ,v :e $HOME/.vimrc /.vimutopia/vimrc-py.vim /.vimutopia/vimrc-c.vim<CR>
 nmap <F12> : <C-u>source ~/.vimrc<CR>: <C-u>source ~/.vimutopia/vimrc-py.vim<CR>: <C-u>source ~/.vimutopia/vimrc-c.vim<CR>: echo "VIM's files reloaded"<CR>

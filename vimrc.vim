@@ -42,6 +42,10 @@ imap [ []<left>
 imap ( ()<left>
 imap { {}<left>
 
+" :W :Q uppercase are convert to lowercase
+cmap Q q
+cmap W w
+
 " Change statusbar color in insert mode
 au InsertEnter * hi StatusLine term=bold cterm=bold
 au InsertLeave * hi StatusLine term=bold,reverse cterm=bold,reverse

@@ -42,9 +42,11 @@ imap [ []<left>
 imap ( ()<left>
 imap { {}<left>
 
-" :W :Q uppercase are convert to lowercase
-cmap Q q
-cmap W w
+" Allow :W and :Q
+cab W w
+cab Q q
+cab Wq wq
+cab WQ wq
 
 " Change statusbar color in insert mode
 au InsertEnter * hi StatusLine term=bold cterm=bold
@@ -60,8 +62,8 @@ imap <S-F11> <ESC>:let @/=""<CR>a
 nmap <S-F11> :let @/=""<CR>
 
 if has("python")
-	" Auto-complete words
-	imap <TAB> <ESC>:python auto_complete()<CR>a
+    " Auto-complete words
+    imap <TAB> <ESC>:python auto_complete()<CR>a
 endif
 
 " Open a new tab

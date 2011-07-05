@@ -40,8 +40,8 @@ endif
 " Drag Line
 nmap <C-down> ddp
 imap <C-down> <ESC> ddp a
-nmap <C-up> ddkkp
-imap <C-up> <ESC> ddkkp a
+nmap <C-up> ddkP
+imap <C-up> <ESC> ddkP a
 
 " (,[,{ Autocomplete
 imap [ []<left>

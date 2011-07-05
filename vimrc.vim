@@ -37,6 +37,12 @@ endif
 
 " >> Aliases <<
 
+" Drag Line
+nmap <C-down> ddp
+imap <C-down> <ESC> ddp a
+nmap <C-up> ddkkp
+imap <C-up> <ESC> ddkkp a
+
 " (,[,{ Autocomplete
 imap [ []<left>
 imap ( ()<left>

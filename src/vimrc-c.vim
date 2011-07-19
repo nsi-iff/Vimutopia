@@ -19,6 +19,10 @@ retab
 imap <F9> <ESC>:w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
 nmap <F9> :w<CR>:! clear; gcc % -o %:r; chmod +x ./%:r; ./%:r<CR>
 
+" Compile
+imap <F7> <ESC>:w<CR>:! clear; gcc % -o %:r;<CR>
+nmap <F7> :w<CR>:! clear; gcc % -o %:r;<CR>
+
 " Run
 imap <F5> <ESC>:! clear; ./%:r<CR>
 nmap <F5> :! clear; ./%:r<CR>

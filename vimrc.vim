@@ -11,8 +11,13 @@ set background=dark
 " Show ruler
 set ruler
 
-" Show statusbar with 2 lines
-set laststatus=2
+" Set statusline configurations
+set laststatus=2   " Show statusbar with 2 lines
+set statusline=%<%f\    " Filename
+set statusline+=\ Lang=[%Y]   " File Language
+set statusline+=\ [%{getcwd()}]   " Current dir
+set statusline+=\ [A=\%03.3b/Hex=\%02.2B]  " ASCII / Hexadecimal value of char
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%   " Right aligned file nav info
 
 " Show markup characters
 set list

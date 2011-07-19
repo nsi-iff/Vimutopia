@@ -85,6 +85,9 @@ nnoremap <C-Left>  :tabprevious<CR>
 " Undo
 imap <C-z> <ESC>ua
 
+" Easy to enter in normal mode
+imap ç <ESC>
+
 " NerdTree
 nmap <F2> :NERDTreeToggle<CR>
 imap <F2> <Esc>:NERDTreeToggle<CR>a

@@ -2,29 +2,40 @@
 # -*- coding: utf-8 -*-
 
 from should_dsl import should
-import scripts_generic
+import generic
 import unittest
 
 
-class Testscripts_generic(unittest.TestCase):
-    """Test the scripts_generic python functions"""
+class TestAutoComplete(unittest.TestCase):
+    """Test the auto-complete feature"""
 
-    def test_used_text(self):
-        scripts_generic.get_used_text("   aa") |should| equal_to("aa")
-        scripts_generic.get_used_text("  a  b") | should| equal_to("b")
+    def setUp(self):
+        self.words = ["abc", "cba", "cbb", "abcd"]
 
-    def test_unused_text(self):
-        scripts_generic.get_unused_text("   a") |should| equal_to("   ")
+    def it_knows_if_needs_to_complete(self):
+        generic.to_be_completed("", self.words) |should| be(False)
+        generic.to_be_completed("a", self.words) |should| be(True)
+        generic.to_be_completed("d", self.words) |should| be(False)
 
-    def test_all_words(self):
-        scripts_generic.get_all_words("hamburger and coke") |should| equal_to(["hamburger", "and", "coke"])
-        scripts_generic.get_all_words("any_words, here") |should| equal_to(["any_words", "here"])
+    def it_knows_the_text_to_complete(self):
+        generic.text_to_complete("") |should| equal_to("")
+        generic.text_to_complete("a") |should| equal_to("a")
+        generic.text_to_complete(" a") |should| equal_to("a")
+        generic.text_to_complete("\ta") |should| equal_to("a")
 
-    def test_index_of_equals(self):
-        scripts_generic.get_index_of_equals("cl", "class") |should| equal_to(2)
-        scripts_generic.get_index_of_equals("claa", "class") |should| equal_to(3)
+    def it_knows_the_text_to_not_complete(self):
+        generic.text_to_not_complete("") |should| equal_to("")
+        generic.text_to_not_complete("  ") |should| equal_to("  ")
+        generic.text_to_not_complete("a") |should| equal_to("")
+        generic.text_to_not_complete("  a") |should| equal_to("  ")
+        generic.text_to_not_complete("  ab") |should| equal_to("  ")
+        generic.text_to_not_complete("  ab a") |should| equal_to("  ab ")
 
-    def test_get_completation(self):
-        scripts_generic.get_completation("class Foo(object): pass", "Fo") |should| equal_to("Foo")
-        scripts_generic.get_completation("class classe", "cl") |should| equal_to("class")
-        scripts_generic.get_completation("class Foo", "class") |should| equal_to("class")
+    def it_knows_all_words_in_a_text(self):
+        generic.all_words("a b c") |should| equal_to(["a", "b", "c"])
+        generic.all_words("a b b") |should| equal_to(["a", "b"])
+
+    def it_completes_words(self):
+        generic.complete("a", self.words) |should| equal_to("abc")
+        generic.complete("c", self.words) |should| equal_to("cb")
+        generic.complete("abc", self.words) |should| equal_to("abc")

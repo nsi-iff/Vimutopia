@@ -36,7 +36,7 @@ set hlsearch
 if has("python")
 python << EOF
 import os
-exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "scripts_generic.py")).read()
+exec open(os.path.join(os.environ["HOME"], ".vimutopia", "scripts", "generic.py")).read()
 EOF
 endif
 

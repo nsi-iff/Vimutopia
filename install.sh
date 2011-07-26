@@ -74,7 +74,7 @@ function copy_important_files
     then
         error "Can't create doc folder"
     fi
-    cp src/scripts/scripts_generic.py $HOME/.vimutopia/scripts
+    cp src/scripts/generic.py $HOME/.vimutopia/scripts
     if [ $? != 0 ]
     then
         error "Can't copy a script"
@@ -129,7 +129,7 @@ function install_python_dependencies
     then
         error "Can't copy a doc"
     fi
-    cp src/scripts/scripts_python.py $HOME/.vimutopia/scripts
+    cp src/scripts/python.py $HOME/.vimutopia/scripts
     if [ $? != 0 ]
     then
         error "Can't copy a script"

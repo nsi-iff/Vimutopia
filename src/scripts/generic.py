@@ -3,69 +3,77 @@
 
 import commands
 import re
+try:
+    import vim
+except ImportError:
+    pass
 
-def get_all_words(text):
+WORD_CHARS = r"A-Za-z_"
+
+RE_WORD_CHAR = r"[%s]" % WORD_CHARS
+RE_NOT_WORD_CHAR = r"[^%s]" % WORD_CHARS
+
+def to_be_completed(text, words):
+    if not text:
+        return False
+    for word in words:
+        if word.startswith(text):
+            return True
+    return False
+
+def text_to_complete(text):
+    match = re.search("(%s+)$" % RE_WORD_CHAR, text)
+    if match == None:
+        return ""
+    return match.groups()[0]
+
+def text_to_not_complete(text):
+    match = re.search("^(.*%s)%s*$" % (RE_NOT_WORD_CHAR, RE_WORD_CHAR), text)
+    if match == None:
+        return ""
+    return match.groups()[0]
+
+def all_words(text):
     words = []
-    for line in text.split("\n"):
-        words_of_line = [match.group() for match in re.finditer("[A-Za-z_]+", line)]
-        words.extend(words_of_line)
+    for match in re.finditer("%s+" % RE_WORD_CHAR, text):
+        word = match.group()
+        if word not in words:
+            words.append(word)
     return words
 
-def get_completation(text, used_text):
-    words = get_all_words(text)
-    completed = ""
-    for word in words:
-        if word.startswith(used_text) and word != used_text:
-            if completed:
-                index = get_index_of_equals(completed, word)
-                completed = word[:index]
-            else:
-                completed = word
-    if completed:
-        return completed
-    else:
-        return used_text
-
-def get_index_of_equals(text1, text2):
+def _index_of_equals(text1, text2):
     for index, letter1 in enumerate(text1):
-        if index < len(text2) - 1:
+        if index < len(text2):
             if text2[index] != letter1:
                 return index
     return min(len(text1), len(text2))
 
-def get_used_text(text):
-    match = re.search("[A-Za-z_]+$", text)
-    if match == None:
-        return ""
-    used = text[match.start():]
-    return used
-
-def get_unused_text(text):
-    match = re.search("[A-Za-z_]+$", text)
-    if match == None:
-        return text
-    unused = text[:match.start()]
-    return unused
-if __name__ == "__main__":
-    try:
-        import vim
-
-        def auto_complete():
-            line, row = vim.current.window.cursor
-            if row:
-                word = get_used_text(vim.current.line[:row + 1])
-                unused = get_unused_text(vim.current.line[:row + 1])
+def complete(text, words):
+    completed = ""
+    for word in words:
+        if word.startswith(text):
+            if completed:
+                index = _index_of_equals(completed, word)
+                completed = word[:index]
             else:
-                word = ""
-                unused = ""
-                row -= 1
-            if word:
-                content = "\n".join(vim.current.buffer)
-                completed = get_completation(content, word)
-            else:
-                completed = "    "
-            vim.current.line = unused + completed + vim.current.line[row + 1:]
-            vim.current.window.cursor = (line, row + len(completed))
-    except ImportError:
-        # Isn't in vim. Probably this is a test.
-        pass
+                completed = word
+    return completed
+
+def auto_complete():
+    line, row = vim.current.window.cursor
+    if row:
+        to_complete = text_to_complete(vim.current.line[:row + 1])
+        to_not_complete = text_to_not_complete(vim.current.line[:row + 1])
+    else:
+        to_complete = ""
+        to_not_complete = ""
+        row -= 1
+    if to_complete:
+        content = "\n".join(vim.current.buffer)
+        words = all_words(content)
+        words.remove(to_complete)
+        completed = complete(to_complete, words)
+    else:
+        completed = "    "
+    vim.current.line = to_not_complete + completed + vim.current.line[row + 1:]
+    vim.current.window.cursor = (line, row + len(completed) - len(to_complete))

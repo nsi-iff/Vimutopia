@@ -71,7 +71,8 @@ def auto_complete():
     if to_complete:
         content = "\n".join(vim.current.buffer)
         words = all_words(content)
-        words.remove(to_complete)
+        if to_complete in words:
+            words.remove(to_complete)
         completed = complete(to_complete, words)
     else:
         completed = "    "

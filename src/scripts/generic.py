@@ -73,7 +73,7 @@ def auto_complete():
         words = all_words(content)
         if to_complete in words:
             words.remove(to_complete)
-        completed = complete(to_complete, words)
+        completed = complete(to_complete, words) or to_complete
     else:
         completed = "    "
     vim.current.line = to_not_complete + completed + vim.current.line[row + 1:]

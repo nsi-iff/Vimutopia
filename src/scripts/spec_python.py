@@ -2,9 +2,33 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import os
 from should_dsl import should
-from scripts_python import(revise_spaces_in_expressions, revise_name_class, revise_two_points,
-revise_spaces_in_end_of_line, revise_spaces_around_equals, revise_spaces_around_operators)
+from python import(revise_spaces_in_expressions, revise_name_class, revise_two_points,
+revise_spaces_in_end_of_line, revise_spaces_around_equals, revise_spaces_around_operators,
+namespace, update_namespace, complete, get_module_names)
+
+
+class TestPythonComplete(unittest.TestCase):
+
+    def tearDown(self):
+        namespace.clear()
+
+    def it_updates_namespace_by_module_names(self):
+        namespace |should| equal_to({})
+        update_namespace(module_names=["os"])
+        namespace |should| equal_to({"os": os})
+
+    def it_knows_modules_of_a_file(self):
+        get_module_names("import os") |should| equal_to(["os"])
+        get_module_names("import os\nimport sys") |should| equal_to(["os", "sys"])
+
+    def it_completes_module_attributes(self):
+        update_namespace(module_names=["os"])
+        complete("os.syst") |should| equal_to("os.system(")
+        complete("os.sysc") |should| equal_to("os.sysconf")
+        complete("os.sysconf_") |should| equal_to("os.sysconf_names")
+
 
 class Testpython(unittest.TestCase):
 

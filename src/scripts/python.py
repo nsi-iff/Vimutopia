@@ -7,11 +7,67 @@ try:
     import vim
 except ImportError:
     # Isn't in vim. Probably this is a test.
-    pass
+    from generic import _index_of_equals
 import os
 import sys
 import re
 import subprocess
+
+WORD_CHARS = r"A-Za-z_."
+
+RE_WORD_CHAR = r"[%s]" % WORD_CHARS
+RE_NOT_WORD_CHAR = r"[^%s]" % WORD_CHARS
+
+namespace = {}
+completer = rlcompleter.Completer(namespace)
+
+def update_namespace(module_names):
+    global completer
+    for module_name in module_names:
+        module = __import__(module_name)
+        namespace[module_name] = module
+    completer = rlcompleter.Completer(namespace)
+
+def get_module_names(content):
+    module_names = []
+    for match in re.finditer("^import (?P<module_name>.+)$", content, flags=re.MULTILINE):
+        module_names.append(match.groupdict()["module_name"])
+    return module_names
+
+def complete(text):
+    completed = ""
+    word = ""
+    count = 0
+    while word is not None:
+        word = completer.complete(text, count)
+        if word:
+            if word.startswith(text):
+                if completed:
+                    index = _index_of_equals(completed, word)
+                    completed = word[:index]
+                else:
+                    completed = word
+        count += 1
+    return completed
+
+def auto_complete():
+    line, row = vim.current.window.cursor
+    if row:
+        to_complete = text_to_complete(vim.current.line[:row + 1])
+        to_not_complete = text_to_not_complete(vim.current.line[:row + 1])
+    else:
+        to_complete = ""
+        to_not_complete = ""
+        row -= 1
+    if to_complete:
+        content = "\n".join(vim.current.buffer)
+        module_names = get_module_names(content)
+        update_namespace(module_names)
+        completed = complete(to_complete) or to_complete
+    else:
+        completed = "    "
+    vim.current.line = to_not_complete + completed + vim.current.line[row + 1:]
+    vim.current.window.cursor = (line, row + len(completed) - len(to_complete))
 
 def get_program_name(test_name):
     name = test_name.split(".")[0]

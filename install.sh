@@ -87,15 +87,21 @@ function copy_important_files
             error "Can't create .vim directory"
         fi
     fi
-    cp -R autoload $HOME/.vim/autoload
-    if [ $? != 0 ]
+    if [ ! -d $HOME/.vim/autoload ]
     then
-        error "Can't copy autoload folder"
+        cp -R autoload $HOME/.vim/autoload
+        if [ $? != 0 ]
+        then
+            error "Can't copy autoload folder"
+        fi
     fi
-    cp -R bundle $HOME/.vim/bundle
-    if [ $? != 0 ]
+    if [ ! -d $HOME/.vim/bundle ]
     then
-        error "Can't copy bundle folder"
+        cp -R bundle $HOME/.vim/bundle
+        if [ $? != 0 ]
+        then
+            error "Can't copy bundle folder"
+        fi
     fi
 }
 

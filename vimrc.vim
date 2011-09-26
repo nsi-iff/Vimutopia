@@ -2,6 +2,9 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Setting VIMHOME
+let $VIMHOME = $HOME."/.vim"
+
 syntax on       " Syntax colored
 filetype on     " Try to detect filetype
 set number      " Put line numbers
@@ -20,6 +23,7 @@ set ruler
 set laststatus=2   " Show statusbar with 2 lines
 "set statusline=%<%f\    " Filename
 set statusline+=\ Lang=[%Y]   " File Language
+
 "set statusline+=\ [%{getcwd()}]   " Current dir
 "set statusline+=\ [A=\%03.3b/Hex=\%02.2B]  " ASCII / Hexadecimal value of char
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%   " Right aligned file nav info

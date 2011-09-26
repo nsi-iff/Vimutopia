@@ -2,12 +2,16 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-syntax on	" Syntax colored
-filetype on	" Try to detect filetype
-set number	" Put line numbers
+syntax on       " Syntax colored
+filetype on     " Try to detect filetype
+set number      " Put line numbers
 set background=dark
 set encoding=utf-8
 set fileformat=unix
+set wildmenu
+set wildmode=list:longest
+set title
+set nobackup    " Don't make backup
 
 " Show ruler
 set ruler

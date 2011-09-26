@@ -2,12 +2,16 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Set colorscheme
+colorscheme desert
+
 " Setting VIMHOME
 let $VIMHOME = $HOME."/.vim"
 
 syntax on       " Syntax colored
 filetype on     " Try to detect filetype
 set number      " Put line numbers
+set ruler
 set background=dark
 set encoding=utf-8
 set fileformat=unix
@@ -15,9 +19,12 @@ set wildmenu
 set wildmode=list:longest
 set title
 set nobackup    " Don't make backup
+set mouse=a     " Use the mouse
+set backspace=2 " Activate backspace to delete characters
 
-" Show ruler
-set ruler
+" Show markup characters
+set list
+set listchars=eol:¬,trail:▸,tab:\ \ 
 
 " Set statusline configurations
 set laststatus=2   " Show statusbar with 2 lines
@@ -27,16 +34,6 @@ set statusline+=\ Lang=[%Y]   " File Language
 "set statusline+=\ [%{getcwd()}]   " Current dir
 "set statusline+=\ [A=\%03.3b/Hex=\%02.2B]  " ASCII / Hexadecimal value of char
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%   " Right aligned file nav info
-
-" Show markup characters
-set list
-set listchars=eol:¬,trail:▸,tab:\ \ 
-
-" Use the mouse
-set mouse=a
-
-" Activate backspace to delete characters
-set backspace=2
 
 " Dynamic search
 set incsearch

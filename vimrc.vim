@@ -57,11 +57,6 @@ imap <C-down> <ESC> ddp a
 nmap <C-up> ddkP
 imap <C-up> <ESC> ddkP a
 
-" (,[,{ Autocomplete
-imap [ []<left>
-imap ( ()<left>
-imap { {}<left>
-
 " Allow :W and :Q
 cab W w
 cab Q q

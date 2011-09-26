@@ -11,7 +11,6 @@ let $VIMHOME = $HOME."/.vim"
 syntax on       " Syntax colored
 filetype on     " Try to detect filetype
 set number      " Put line numbers
-set ruler
 set background=dark
 set encoding=utf-8
 set fileformat=unix
@@ -19,8 +18,13 @@ set wildmenu
 set wildmode=list:longest
 set title
 set nobackup    " Don't make backup
+
+" Moving/Editing configs
 set mouse=a     " Use the mouse
 set backspace=2 " Activate backspace to delete characters
+set ruler       " Show cursos location all the time
+set cursorline  " Line idicating the cursor location
+
 
 " Show markup characters
 set list

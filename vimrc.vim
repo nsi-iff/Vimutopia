@@ -1,12 +1,13 @@
+" Set pathogen plugin
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Put line numbers
-set number
-
-" Syntax colored
-syntax on
+syntax on	" Syntax colored
+filetype on	" Try to detect filetype
+set number	" Put line numbers
 set background=dark
+set encoding=utf-8
+set fileformat=unix
 
 " Show ruler
 set ruler
